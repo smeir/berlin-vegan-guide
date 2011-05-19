@@ -3,8 +3,8 @@ at the moment build for iphone and android is broken, but you can test it in a d
 
 ## testing/debuging on desktop
 
-index.html -> App for desktop browser (only chrome)
-frame.html -> App for desktop browser in a nice iPhone Frame
+* index.html -> App for desktop browser (only chrome)
+* frame.html -> App for desktop browser in a nice iPhone Frame
 
 ##Supported Platforms
 
