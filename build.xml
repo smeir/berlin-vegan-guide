@@ -58,8 +58,8 @@
             <filelist dir="${src.dir}/lib/android/"
                       files="webintent.js"/>
         </copy>
-        <copy todir="${build.dir}">
-            <filelist dir="${src.dir}"
+        <copy todir="${build.dir}/lib/android">
+            <filelist dir="${src.dir}/lib/android"
                       files="phonegap_android.js">
             </filelist>
         </copy>
@@ -79,13 +79,17 @@
                      />
             <fileset dir="${src.dir}/src/views"
                      includes="*.js"
-                     />
+                    />
+            <fileset dir="${src.dir}/src/data"
+                     includes="*.js"
+                    />
             <filelist dir="${src.dir}/src/models"
-                     files="Data.js, LocationStore.js, HomeMenuStore.js, Restaurant.js RestaurantStore.js, Location.js, ShopStore.js,CafeStore.js,Setting.js,SettingStore.js,Favorite.js, FavoriteStore.js,FavoriteListStore.js"
-                     />
+                      files="LocationStore.js, HomeMenuStore.js, Restaurant.js RestaurantStore.js, Location.js, ShopStore.js,CafeStore.js,Setting.js,SettingStore.js,Favorite.js, FavoriteStore.js,FavoriteListStore.js"
+                    />
+        
             <fileset dir="${src.dir}/src/utils"
                      includes="*.js"
-                     />
+                    />
         </concat>
     </target>
 
