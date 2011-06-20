@@ -74,7 +74,7 @@ h2 {
 }
 
 .main-menu-wrapper{
-	padding: 15px;    
+	padding: 15px;
 	float: left;
 	width: 105px;
 	font-size: 	0.8em;
@@ -83,6 +83,8 @@ h2 {
 	height: 108px;
 	opacity: 1;
 }
+
+
 .main-menu-wrapper_old{
 	padding: 10px;
 	float: left;
