@@ -4,7 +4,7 @@ Ext.namespace('BVApp','BVApp.views','BVApp.models','BVApp.templates','BVApp.util
 BVApp.Main = {
     ui: null,
     errorEMail: "bvapp@berlin-vegan.org",
-    version: "1.0.1",
+    version: "1.0.2",
     favoriteListStoreID: "favoriteListStore",
     favoriteStoreID: "favoriteStore",
     restaurantStoreID: "restaurantStore",
