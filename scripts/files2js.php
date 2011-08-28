@@ -28,7 +28,9 @@ foreach ($files as $file) {
      $content = hyphenation($content);
     }
     $file = str_replace($startdir,"",$file);
-    $result .= $jsArrayName . "[\"".$file."\"] = \"".$content."\";\n";
+    if(strstr($file,"html")){ // only html files
+        $result .= $jsArrayName . "[\"".$file."\"] = \"".$content."\";\n";
+    }
 }
 
 $file = fopen ($outPutFile, "w");
