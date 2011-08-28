@@ -50,7 +50,7 @@ BVApp.utils.Locales = {
         DetailsVegan5: "100% vegan",
         DetailsWheelchair: "Rollstuhl geeignet",
         DetailsNotWheelchair: "nicht Rollstuhl geeignet",
-        DetailsWCWheelchair: "WC Rohlstuhl geeignet",
+        DetailsWCWheelchair: "WC Rollstuhl geeignet",
         DetailsWCNotWheelchair: "WC nicht Rollstuhl geeignet",
         DetailsDogsAllowed: "Hunde erlaubt",
         DetailsChildSeat: "Kindersitz vorhanden",

@@ -1,0 +1,11 @@
+Version 1.5
+-----------
++ Major bugfix for dictionary and exclude tags
++ New languages added (current state of Hyphenator 1.0.2)
+
+Version 1.4
+------------
++ Added languages Spanish (es), Dutch (nl) and Swedish (sv)
++ Now compatible to patterns from the JavaScript Hyphenator
++ Changed project name from "PHP Hypehnation" to "phpHyphenator"
++ Modified MoreCSS plugin for MoreCSS 1.0 Beta 4
