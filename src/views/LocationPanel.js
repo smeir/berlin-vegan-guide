@@ -17,6 +17,7 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
     needsMapRefresh:true,
 
     initComponent: function () {
+        var me=this;
         this.descriptionPanel = new BVApp.views.LocationDescriptionPanel();
         this.detailsPanel = new BVApp.views.LocationDetailsPanel();
         //TODO
@@ -62,16 +63,7 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
             allowMultiple: false,
             items: [this.descriptionButton,this.detailsButton]
         });
-        
-        if(typeof google !== "undefined"){
-            this.mapPanel = new BVApp.views.LocationMapPanel();
-            this.mapButton = new Ext.Button({
-                scope:this,
-                text   : '&nbsp;&nbsp;'+BVApp.Main.getLangString("Map")+'&nbsp;&nbsp;&nbsp;&nbsp;',
-                handler: this.mapButtonClicked
-            });
-            this.switcherSegmentedButton.add(this.mapButton);
-        }
+
         this.switcherToolbar = new Ext.Toolbar({
             dock: 'bottom',
             items: [this.switcherSegmentedButton],
@@ -108,6 +100,15 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
      * @param restaurant Ext.Data.Model
      */
     updateRestaurant: function(restaurant){
+       if(typeof(google) !== 'undefined' && this.mapPanel === null){
+            this.mapPanel = new BVApp.views.LocationMapPanel();
+            this.mapButton = new Ext.Button({
+                scope:this,
+                text   : '&nbsp;&nbsp;'+BVApp.Main.getLangString("Map")+'&nbsp;&nbsp;&nbsp;&nbsp;',
+                handler: this.mapButtonClicked
+            });
+            this.switcherSegmentedButton.add(this.mapButton);
+        }
         this.currentRestaurant = restaurant;
         this.needsMapRefresh =true;
         this.toolbar.setTitle(Ext.util.Format.ellipsis(restaurant.get("name"),BVApp.Main.maxToolbarLetters));

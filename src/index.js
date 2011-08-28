@@ -70,6 +70,7 @@ BVApp.Main = {
         console.log("Performance " +  this.performance);
 
 
+
     },
     locationReady: function(){        
         this.ui.determinePositionMask.hide();
@@ -167,6 +168,12 @@ Ext.setup({
             glossOnIcon: true,
             onReady: function() {
                 console.log("Ext.setup.onReady");
+                // lood google maps asynchrone
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "http://maps.googleapis.com/maps/api/js?sensor=true&callback=Ext.emptyFn";
+                document.body.appendChild(script);
+
                 BVApp.Main.launched =true;
                 BVApp.Main.init();
             }

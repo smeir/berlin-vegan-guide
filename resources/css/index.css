@@ -71,6 +71,7 @@ h2 {
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
+    padding-top: 1em;
 }
 
 .main-menu-wrapper{

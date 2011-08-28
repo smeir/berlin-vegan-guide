@@ -36,6 +36,10 @@ BVApp.views.LocationMainPanel =  Ext.extend(Ext.Panel,{
                 cover: false
             }
         });
+        this.on("cardswitch",function (container, newCard, oldCard, index, animated){
+            //set explizit to hide, on some android devices there are timing errors, so setActiveItem doesn't work
+            oldCard.hide();
+        },this);
         this.restaurantListPanel.on("back",this.doBack,this);
         this.restaurantListPanel.on("showFilterPanel",this.showFilterPanel,this);
         this.restaurantPanel.on("back",function(){
@@ -46,9 +50,6 @@ BVApp.views.LocationMainPanel =  Ext.extend(Ext.Panel,{
             this.restaurantListPanel.getRestaurantList().getSelectionModel().deselectAll();
             this.setActiveItem(this.restaurantListPanel,animation);
             BVApp.Main.ui.activeView = this.restaurantListPanel;
-            if(BVApp.utils.AppUtils.isAndroid()){
-                this.restaurantPanel.hide(); // set explizit to hide, on some android devices there are timing errors, so setActiveItem doesn't work
-            }
         },this);
         this.restaurantListPanel.getRestaurantList().on("itemtap",function(list,index, item,event ){
             var animation = false;
@@ -59,9 +60,6 @@ BVApp.views.LocationMainPanel =  Ext.extend(Ext.Panel,{
             this.restaurantPanel.updateRestaurant(restaurant);
             this.setActiveItem(this.restaurantPanel,animation);
             BVApp.Main.ui.activeView = this.restaurantPanel;
-            if(BVApp.utils.AppUtils.isAndroid()){
-                this.restaurantListPanel.hide(); // set explizit to hide, on some android devices there are timing errors, so setActiveItem doesn't work
-            }
         },this);
 
         BVApp.views.LocationMainPanel.superclass.initComponent.call(this);
