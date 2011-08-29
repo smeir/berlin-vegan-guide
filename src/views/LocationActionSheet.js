@@ -15,7 +15,7 @@ BVApp.views.LocationActionSheet = Ext.extend(Ext.ActionSheet,{
                 handler: this.doFavorite,
                 scope:this
                 //ui: 'decline'
-            },/*,{
+            }/*,{
                 text: BVApp.Main.getLangString("ActionSendAsEMail"),
                 handler: this.doSendAsEMail,
                 scope:this
