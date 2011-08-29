@@ -15,11 +15,7 @@ BVApp.views.LocationActionSheet = Ext.extend(Ext.ActionSheet,{
                 handler: this.doFavorite,
                 scope:this
                 //ui: 'decline'
-            },{
-                text: BVApp.Main.getLangString("ActionReportError"),
-                handler: this.doReportError,
-                scope:this
-            }/*,{
+            },/*,{
                 text: BVApp.Main.getLangString("ActionSendAsEMail"),
                 handler: this.doSendAsEMail,
                 scope:this
@@ -34,7 +30,17 @@ BVApp.views.LocationActionSheet = Ext.extend(Ext.ActionSheet,{
                     scope:this
                 });
             }
+            items.push(({
+                    text: BVApp.Main.getLangString("ActionNavigation"),
+                    handler: this.doNavigation,
+                    scope:this
+            }))
         }
+        items.push({
+            text: BVApp.Main.getLangString("ActionReportError"),
+            handler: this.doReportError,
+            scope:this
+        });
         items.push({
             text: BVApp.Main.getLangString("ActionCancel"),
             ui  : 'confirm',
@@ -54,6 +60,12 @@ BVApp.views.LocationActionSheet = Ext.extend(Ext.ActionSheet,{
         this.hide();
     },
     doCancel: function(){
+        this.hide();
+    },
+    doNavigation: function(){
+        var lon = this.currentRestaurant.get("long");
+        var lat = this.currentRestaurant.get("lat");
+        BVApp.utils.AppUtils.doNavigation(lat,lon);
         this.hide();
     },
     doFavorite: function(){

@@ -24,6 +24,9 @@
         function preventBehavior(e) {
             e.preventDefault();
         }
+        // use phonegap implementation instead of builtin html5
+        Geolocation.usingPhoneGap =true;
+        
         document.addEventListener("touchmove", preventBehavior, false);
         function onBodyLoad(){
             console.log("onBodyLoad()");

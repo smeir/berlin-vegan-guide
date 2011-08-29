@@ -76,6 +76,7 @@ BVApp.utils.Locales = {
         ActionSendAsEMail: "Per E-Mail senden",
         ActionReportError: "Fehler melden",
         ActionCall:"Anrufen",
+        ActionNavigation: "Navigation",
         ActionCancel: "Abbrechen",
 
         EMailError: "Fehler:",
@@ -169,6 +170,7 @@ BVApp.utils.Locales = {
         ActionSendAsEMail: "Send as email",
         ActionReportError: "Report error",
         ActionCall:"Phone call",
+        ActionNavigation: "Navigation",
         ActionCancel: "Cancel",
 
         EMailError: "Error:",

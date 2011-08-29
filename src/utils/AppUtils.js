@@ -52,6 +52,19 @@ BVApp.utils.AppUtils = {
             });
         }
     },
+    doNavigation: function(lat,lon){
+        console.log("enter doNavigation");
+        if(this.isAndroid()){
+            window.plugins.webintent.startActivity({
+                action: WebIntent.ACTION_VIEW,
+                url: "geo:" + lat + "," +lon + "?z=20"
+            }, function() {
+                console.log("doNavigation:success");
+            }, function() {
+                console.log("doNavigation:error");
+            });
+        }
+    },
     isIPhone: function(){
         return device.name.indexOf("iPhone") !== -1 || device.platform.indexOf("iPhone") !== -1;
     },

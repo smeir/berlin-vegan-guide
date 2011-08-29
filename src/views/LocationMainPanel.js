@@ -259,4 +259,5 @@ BVApp.views.LocationMainPanel =  Ext.extend(Ext.Panel,{
       return this.restaurantListPanel;  
     }
 
+
 });

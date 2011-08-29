@@ -29,13 +29,15 @@ BVApp.utils.CurrentGeoPosition = new Object({
                                                 bPermissionDenied,
                                                 bLocationUnavailable,
                                                 message) {
-                        if(!BVApp.utils.CurrentGeoPosition.errorShowed){
-                            BVApp.utils.AppUtils.alertMessage(BVApp.Main.getLangString("PositionAlertTitle"), BVApp.Main.getLangString("PositionAlert"));
-                            BVApp.utils.CurrentGeoPosition.errorShowed = true;
-                        }
-                        if(me.callbackCounter===0){
-                            me.callbackCounter=1;
-                            callback();
+                        if(bPermissionDenied){
+                            if(!BVApp.utils.CurrentGeoPosition.errorShowed){
+                                BVApp.utils.AppUtils.alertMessage(BVApp.Main.getLangString("PositionAlertTitle"), BVApp.Main.getLangString("PositionAlert"));
+                                BVApp.utils.CurrentGeoPosition.errorShowed = true;
+                            }
+                            if(me.callbackCounter===0){
+                                me.callbackCounter=1;
+                                callback();
+                            }
                         }
                     }
                 }
