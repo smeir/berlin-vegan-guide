@@ -44,12 +44,8 @@
     </target>
     <target name="copy.lib.ios" depends="copy.lib">
         <copy todir="${build.dir}/lib/iphone">
-            <filelist dir="${src.dir}/lib/iphone/"
-                      files="EmailComposer.js"/>
-        </copy>
-        <copy todir="${build.dir}">
-            <filelist dir="${src.dir}"
-                      files="phonegap_iphone.js,json2.js">
+            <filelist dir="${src.dir}/lib/iphone"
+                      files="EmailComposer.js,phonegap_iphone.js,json2.js">
             </filelist>
         </copy>
     </target>
