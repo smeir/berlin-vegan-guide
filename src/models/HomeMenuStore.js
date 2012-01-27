@@ -11,30 +11,30 @@ BVApp.models.HomeMenuStore = Ext.extend(Ext.data.Store, {
             model: "HomeMenu",
             data: [{
                 Text: BVApp.Main.getLangString("Restaurants"),
-                Icon: "restaurants.png",
+                Icon: "phone2.png",
                 classID: "restaurants",
                 disabled: false
             },
             {
                 Text: BVApp.Main.getLangString("Imbiss"),
-                Icon: "imbiss.png",
+                Icon: "berlinmap.png",
                 classID: "imbiss",
                 disabled: false
             },
             {
                 Text: BVApp.Main.getLangString("Cafes"),
-                Icon: "cafes.png",
+                Icon: "emergency.png",
                 classID: "cafes",
                 disabled: false
             },{
                 Text: BVApp.Main.getLangString("IceCafes"),
-                Icon: "icecafes.png",
+                Icon: "globe2.png",
                 classID: "icecafes",
                 disabled: false
             },
             {
                 Text: BVApp.Main.getLangString("Shopping"),
-                Icon: "shopping.png",
+                Icon: "phone2.png",
                 classID: "shopping",
                 disabled: false
             }],

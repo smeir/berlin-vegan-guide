@@ -15,8 +15,12 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
     mapButton:null,
     currentRestaurant:null,
     needsMapRefresh:true,
+    favoritesButton: null,
+    telCallButton: null,
+    favStore: null,
 
     initComponent: function () {
+        this.favStore = Ext.StoreMgr.lookup(BVApp.Main.favoriteStoreID);
         var me=this;
         this.descriptionPanel = new BVApp.views.LocationDescriptionPanel();
         this.detailsPanel = new BVApp.views.LocationDetailsPanel();
@@ -36,12 +40,44 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
         toolBarItems.push({
                 xtype: "spacer"
         });
-        toolBarItems.push({
-            iconMask: true,
-            iconCls: 'action',
-            handler: this.doAction,
-            scope:this
-        });
+
+        if(BVApp.utils.AppUtils.isAndroid()){
+            this.favoritesButton = new Ext.Button({
+                iconMask: true,
+                iconCls: 'favorites',
+                handler: this.doFavorite,
+                scope:this
+            });
+            toolBarItems.push(this.favoritesButton);
+            this.telCallButton = new Ext.Button({
+                iconMask: true,
+                iconCls: 'phone1',
+                handler: this.doTelCall,
+                scope:this
+            });
+            toolBarItems.push(this.telCallButton);
+
+            toolBarItems.push({
+                iconMask: true,
+                iconCls: 'compass3',
+                handler: this.doNavigation,
+                scope:this
+            });
+            toolBarItems.push({
+                iconMask: true,
+                iconCls: 'warning_black',
+                handler: this.doReportError,
+                scope:this
+            });
+
+        }else{
+            toolBarItems.push({
+                iconMask:true,
+                iconCls:'action',
+                handler:this.doAction,
+                scope:this
+            });
+        }
 
         this.toolbar = new Ext.Toolbar({
             dock: 'top',
@@ -90,7 +126,9 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
     },
     doAction: function(button,event){
         var s = new BVApp.views.LocationActionSheet({
-            currentRestaurant: this.currentRestaurant
+            currentRestaurant: this.currentRestaurant,
+            locationPanel: this
+
         });
         s.show();
     },
@@ -112,6 +150,15 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
         this.currentRestaurant = restaurant;
         this.needsMapRefresh =true;
         this.toolbar.setTitle(Ext.util.Format.ellipsis(restaurant.get("name"),BVApp.Main.maxToolbarLetters));
+        if(this.favoritesButton!=null){
+            this.toggleButton(this.favoritesButton,this.isFavorite());
+        }
+        var tel = this.currentRestaurant.get("telephone");
+        if(tel.length>0){ // show only if telephone number available
+            this.telCallButton.show();
+        }else{
+            this.telCallButton.hide();
+        }
         this.descriptionPanel.update({text: ""}); // delete before ajax call
         var openTimes = this.getOpenTimesData(restaurant);
 
@@ -248,5 +295,63 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
             this.needsMapRefresh=false;
         }
 
+    },
+    isFavorite: function(){
+        var record = this.favStore.findRecord("lat",this.currentRestaurant.get("lat")); // if already fav?
+        return record!==null;
+    },
+    doFavorite: function(){
+        var record = this.favStore.findRecord("lat",this.currentRestaurant.get("lat")); // if already fav?
+        if(record === null){
+            var fav = new BVApp.models.Favorite({
+                id: this.favStore.getCount()+1,
+                lat : this.currentRestaurant.get("lat")
+            });
+            this.favStore.add(fav);
+        }else{
+            this.favStore.remove(record);
+        }
+        this.favStore.sync();
+        if(this.favoritesButton!=null){
+            this.toggleButton(this.favoritesButton,this.isFavorite());
+        }
+        var favListStore = Ext.StoreMgr.lookup(BVApp.Main.favoriteListStoreID);
+        favListStore.updateFromFavorites();
+
+    },
+    doNavigation: function(){
+        var lon = this.currentRestaurant.get("long");
+        var lat = this.currentRestaurant.get("lat");
+        BVApp.utils.AppUtils.doNavigation(lat,lon);
+    },
+    doTelCall: function(){
+        var tel = this.currentRestaurant.get("telephone");
+        if(tel.length >0){
+            BVApp.utils.AppUtils.dialTelNumber(tel);
+        }
+    },
+    doReportError: function(){
+        var subject = BVApp.Main.getLangString("EMailError") + " " + this.currentRestaurant.get("name") + " , " + this.currentRestaurant.get("street");
+        var body ="";
+        if(BVApp.utils.AppUtils.isPhoneGap()){
+            body += BVApp.Main.getLangString("EMailPleaseEnterErrorDescription") + "\n";
+            body += "\n\n\n\n\n";
+            body += BVApp.Main.getAppInfoPhoneGapForEMail();
+        }
+        BVApp.utils.AppUtils.sendEMail(BVApp.Main.errorEMail,subject,body);
+    },
+    /**
+     *
+     * @param {Ext.Button} button
+     * @param {Boolean} selected
+     */
+    toggleButton: function(button,selected) {
+        if (selected) {
+            button.addCls("x-button-toogle-on");
+            button.removeCls("x-button-toogle-off");
+        } else {
+            button.addCls("x-button-toogle-off");
+            button.removeCls("x-button-toogle-on");
+        }
     }
 });

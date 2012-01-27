@@ -1,5 +1,8 @@
 
 BVApp.utils.AppUtils = {
+    //public
+
+    android : false,
     loadFile: function(fileName,callback){
         console.log("loadFile");
         callback(BVApp.models.Data[fileName]);
@@ -69,11 +72,7 @@ BVApp.utils.AppUtils = {
         return device.name.indexOf("iPhone") !== -1 || device.platform.indexOf("iPhone") !== -1;
     },
     isAndroid: function(){
-        if(this.isPhoneGap()){
-            return device.name.indexOf("Android") !== -1 || device.platform.indexOf("Android") !== -1;
-        }else{
-            return false;
-        }
+        return this.android;
     },
     isPhoneGap: function(){
         return (typeof device !== "undefined");

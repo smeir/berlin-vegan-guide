@@ -102,7 +102,6 @@ h2 {
 
 .main-menu-wrapper-selected{
 	background-color: rgba(255, 255, 255, 0.292969);
-	-webkit-border-radius: 15px;
 }
 
 /*******************************************/
@@ -151,17 +150,7 @@ h2 {
     content: url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif');
 }
 
-/* listen Pfeil icon*/
-.row-arrow {
-    background-color: rgba(0, 0, 0, 0.5);
-    -webkit-mask-box-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAYAAACQN/8FAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF9JREFUeNpiZoAACSA+DMTPgfgmAw4gDcQ3gPg/EP8EYj98Cu9BFdJesTc+xbeJVWyPpPA/1BY2dEUqQPwESdETqBgKUMeiSJGQoodkK4JF3w1CipAV7wJiOVwKAAIMADmGLvoafh4wAAAAAElFTkSuQmCC');
-    position: absolute;
-    left: auto;
-    right: 7px;
-    top: 22px;
-    width: 10px;
-    height: 13px
-}
+
 .about {
     font-size: 0.85em;
     margin: 0.7em;
@@ -202,13 +191,11 @@ h2 {
     padding-bottom:0.4em;
     text-shadow: rgba(255, 255, 255, 0.746094) 1px 1px 0px;
 }
+
 .details-fieldset {
     position: relative;
     margin: 0 0 1em 0;
     padding: 0;
-    background: #FFFFFF;
-    -webkit-border-radius: 0.6em;
-    border: 1px solid #a8abb0;
 }
 
 .details-label {
@@ -247,8 +234,6 @@ h2 {
 }
 .details-field {
     display: -webkit-box;
-    border-bottom: 1px solid #a8abb0;
-    padding: 0.6em;
 }
 .details-field:last-child {
     border:none;

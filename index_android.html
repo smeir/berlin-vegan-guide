@@ -6,7 +6,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Berlin Vegan Guide</title>
     <!-- Sencha Touch CSS -->
-    <link rel="stylesheet" href="resources/css/application.css" type="text/css">
+    <link rel="stylesheet" href="resources/css/android.css" type="text/css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resources/css/index.css" type="text/css">
     <link rel="stylesheet" media="screen and (-webkit-device-pixel-ratio: 0.75)" href="resources/css/index-240px.css" type="text/css" />
@@ -20,6 +20,7 @@
 
 
     <script type="text/javascript" charset="utf-8">
+        BVApp.utils.AppUtils.isAndroid =true;
         // If you want to prevent dragging, uncomment this section
         function preventBehavior(e) {
             e.preventDefault();
@@ -50,9 +51,26 @@
         BackButton.override();
     </script>
     <script type="text/javascript" src="index-min.js"></script>
+
+    <!-- online data-->
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/ShopStoreData.js"></script>
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/RestaurantStoreData.js"></script>
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/CafeStoreData.js"></script>
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/Textfiles.js"></script>
 </head>
 <!--<body onload="onBodyLoad()">-->
 <body>
-
+<!-- Piwik -->
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://berlin-vegan.de/piwik/" : "http://berlin-vegan.de/piwik/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script><noscript><p><img src="http://berlin-vegan.de/piwik/piwik.php?idsite=6" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
 </body>
 </html>
