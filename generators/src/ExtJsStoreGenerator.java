@@ -92,7 +92,7 @@ public class ExtJsStoreGenerator {
             builder.append("\nBVApp.models.Data[\""+fileName+"\"] =\"" + filesMap.get(fileName) +"\";" );
         }
         String path = "src" + File.separator + "data" +File.separator;
-        writeTextToFile(builder.toString(),path + "Textfiles.js");
+        writeTextToFile(builder.toString(),path + "TextFiles.js");
     }
 
     private String textEncode(String text) {
@@ -138,7 +138,8 @@ public class ExtJsStoreGenerator {
                     || title.equals("Subway")) {
                 restaurantEntries = addEntries(restaurantEntries, spreadsheet);
             }else if (title.equals("Shopping")
-                    || title.equals("Backwaren")) {
+                    || title.equals("Backwaren")
+                    || title.equals("BioReform")) {
                 shoppingEntries= addEntries(shoppingEntries, spreadsheet);
             }else if(title.equals("Cafes")){
                 cafeEntries = addEntries(cafeEntries, spreadsheet);
