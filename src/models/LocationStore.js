@@ -7,6 +7,7 @@ BVApp.models.LocationStore = Ext.extend(Ext.data.ArrayStore, {
     dogsAllowedFilter: null,
     deliveryFilter:null,
     noReviewFilter:null,
+    notOmnivorFilter:null,
 
     constructor : function(config){
         var me = this;
@@ -18,6 +19,11 @@ BVApp.models.LocationStore = Ext.extend(Ext.data.ArrayStore, {
         this.veganDeclaredFilter = new Ext.util.Filter({
             filterFn: function(record) {
                 return record.get("vegan") == "2" || record.get("vegan") == "4" || record.get("vegan") == "5";
+            }
+        });
+        this.notOmnivorFilter = new Ext.util.Filter({
+            filterFn: function(record) {
+                return record.get("vegan") == "3" || record.get("vegan") == "4" || record.get("vegan") == "5";
             }
         });
         this.organicFilter = new Ext.util.Filter({

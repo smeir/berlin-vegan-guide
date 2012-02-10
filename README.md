@@ -22,6 +22,7 @@ at the moment build for iphone and android is broken, but you can test it in a d
 ##Used Software and Tools
 
 * Sencha Touch 1.1
-* phonegap 0.9.3
-* WebStorm 2.0
+* Include.js 1.0.4 http://capmousse.github.com/include.js/
+* phonegap 0.9.4
+* WebStorm 2.0/Intellij IDEA 11
 

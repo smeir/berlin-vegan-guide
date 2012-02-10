@@ -1,8 +1,9 @@
 
 BVApp.utils.AppUtils = {
-    //public
+
 
     android : false,
+    //public
     loadFile: function(fileName,callback){
         console.log("loadFile");
         callback(BVApp.models.Data[fileName]);

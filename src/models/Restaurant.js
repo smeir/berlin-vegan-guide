@@ -1,5 +1,5 @@
 
-Ext.regModel('Restaurant', {
+BVApp.models.Restaurant = Ext.regModel('Restaurant', {
    fields:[       
        "name",
        "nameID",

@@ -4,6 +4,7 @@ BVApp.utils.Locales = {
         AppTitle: "Berlin Vegan Guide",
         VeganPassport: "Vegan Passport",
         Favorites: "Favoriten",
+        Recommendations: "Empfehlungen",
         Options: "Einstellungen",
         Contact: "Kontakt",
         Restaurants: "Restaurants",
@@ -14,6 +15,7 @@ BVApp.utils.Locales = {
         Menu: "Menü",
         Back: "Zurück",
         Description: "Beschreibung",
+        DescriptionNotAvailable: "Beschreibung noch nicht vorhanden",
         Details: "Details",
         Photos: "Fotos",
         Map: "Karte",
@@ -91,6 +93,7 @@ BVApp.utils.Locales = {
         HelpTitle: "Hinweis",
         HelpEmptyLocationList: "Mit den aktuellen Einstellungen wurde kein Ort gefunden. Du kannst die Filter oben rechts ändern.",
         HelpEmptyFavList: "Deine Favoritenliste ist leer. Du kannst eigene Favoriten hinzufügen, indem Du bei einer Ortsbeschreibung 'Als Favorit hinzufügen' auswählst.",
+        HelpEmptyRecommendList: "Für die aktuelle Uhrzeit können wir Dir leider keine Empfehlungen anzeigen. Versuche es bitte später noch einmal.",
         HelpFilterDesc:"Mit diesen Filtern kannst Du die Anzeige einschränken. Ein Ort wird nur angezeigt, wenn alle Filterkriterien erfüllt sind. Wenn kein Filter aktiv ist werden alle Orte angezeigt."
     },
     en: {
@@ -98,6 +101,7 @@ BVApp.utils.Locales = {
         AppTitle: "Berlin Vegan Guide",
         VeganPassport: "Vegan Passport",
         Favorites: "Favorites",
+        Recommendations: "Recommendations",
         Options: "Options",
         Contact: "Contact",
         Restaurants: "Restaurants",
@@ -108,6 +112,7 @@ BVApp.utils.Locales = {
         Menu: "Menu",
         Back: "Back",
         Description: "Description",
+        DescriptionNotAvailable: "Description not available",
         Details: "Details",
         Photos: "Photos",
         Map: "Map",
@@ -185,6 +190,7 @@ BVApp.utils.Locales = {
 
         HelpEmptyLocationList: "No location matches the current filter settings. You can change the filter settings by clicking on the button at the top right.",
         HelpEmptyFavList: "Your list of favorites is empty. You can add favorites by selecting 'Add to favorites' on the description page for a location.",
+        HelpEmptyRecommendList: "Sorry, for the current time we don't have recommendations.",
         HelpFilterDesc:"These filters allow you to limit the search to a certain category. A location is displayed only if all filter criteria are met. If no filter is active, all locations are displayed."
 
     }

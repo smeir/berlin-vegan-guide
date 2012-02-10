@@ -183,9 +183,9 @@ BVApp.views.LocationMainPanel =  Ext.extend(Ext.Panel,{
                 caseSensitive: true
             }]);
         }
-        if(this.currentType === "restaurants" || this.currentType === "imbiss" || this.currentType === "icecafes"){
+        /*if(this.currentType === "restaurants" || this.currentType === "imbiss" || this.currentType === "icecafes"){
             this.restaurantStore.filter([this.restaurantStore.noReviewFilter]); // don't show location without review
-        }
+        } */
         if(BVApp.utils.Settings.filterNowOpen){
             if(this.currentType === "restaurants" || this.currentType === "imbiss" || this.currentType === "icecafes"){
                 this.restaurantStore.filter([this.restaurantStore.nowOpenFilter])

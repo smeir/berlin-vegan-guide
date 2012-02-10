@@ -23,7 +23,6 @@
 <body>
     <div id="sencha-app">
     <script type="text/javascript" src="src/index.js"></script>
-    <script type="text/javascript" src="lib/head.js"></script>
     <div id="sencha-templates">
         <script type="text/javascript" src="src/templates/LocationListItemTemplate.js"></script>
         <script type="text/javascript" src="src/templates/HomeMenuTemplate.js"></script>
@@ -47,6 +46,7 @@
         <script type="text/javascript" src="src/views/LocationMapPanel.js"></script>
         <script type="text/javascript" src="src/views/PassportPanel.js"></script>
         <script type="text/javascript" src="src/views/FavoritesPanel.js"></script>
+        <script type="text/javascript" src="src/views/RecommendationsPanel.js"></script>
         <script type="text/javascript" src="src/views/OptionPanel.js"></script>
         <script type="text/javascript" src="src/views/AboutPanel.js"></script>
         <script type="text/javascript" src="src/views/FilterPanel.js"></script>
@@ -55,7 +55,7 @@
 
     <!-- Place your model files here, Stores: restaurantStore,cafeStore,shopStore,settingStore,favoriteStore -->
     <div id="sencha-models">
-        <script type="text/javascript" src="src/data/TextFiles.js"></script>
+        <script type="text/javascript" src="src/data/Textfiles.js"></script>
         <script type="text/javascript" src="src/models/LocationStore.js"></script>
         <script type="text/javascript" src="src/models/HomeMenuStore.js"></script>
         <script type="text/javascript" src="src/models/Restaurant.js"></script>
@@ -85,8 +85,55 @@
     <!-- Place your controller files here -->
     <div id="sencha-controllers">
     </div>
+        <!--<script type="text/javascript" src="lib/include-min.js"></script>-->
+        <!--<script type="text/javascript">
 
-</div>
+            var inclde = function() {
+                include([
+                   // "http://www.berlin-vegan.de/app/data/ShopStoreData.js",
+                  //  "http://www.berlin-vegan.de/app/data/RestaurantStoreData.js",
+                  //  "http://www.berlin-vegan.de/app/data/CafeStoreData.js",
+                    "http://www.berlin-vegan.de/app/data/Textfiles.js"
+                ], function(){
+                    console.log("READY");
+                    var store = Ext.StoreMgr.lookup(BVApp.Main.restaurantStoreID);
+                    //if(store) store.getProxy().getReader().readRecords(BVApp.data.RestaurantStoreData);
+
+                    if(store) {
+                        store.proxy.data = BVApp.data.RestaurantStoreData;
+                        store.load({
+                            data: BVApp.data.RestaurantStoreData
+                        });
+                    }
+                    /*for (var i = 0; i < BVApp.data.RestaurantStoreData.length; i++) {
+                        var obj = BVApp.data.RestaurantStoreData[i];
+                        var res = new BVApp.models.Restaurant(obj);
+                        store.add(res);
+
+                    } */
+
+
+                    store = Ext.StoreMgr.lookup(BVApp.Main.shopStoreID);
+                 //   if(store) store.loadData(BVApp.data.ShopStoreData,false);
+                    store = Ext.StoreMgr.lookup(BVApp.Main.cafeStoreID);
+                  //  if(store) store.loadData(BVApp.data.CafeStoreData,false);
+
+                });
+            };
+            var inclde2 = function(){
+                var store = Ext.StoreMgr.lookup(BVApp.Main.restaurantStoreID);
+                                    //if(store) store.getProxy().getReader().readRecords(BVApp.data.RestaurantStoreData);
+
+                                    if(store) {
+                                        store.proxy.data = BVApp.data.RestaurantStoreData;
+                                        store.load({
+                                            data: BVApp.data.RestaurantStoreData
+                                        });
+                                    }
+            };
+            setTimeout(inclde2,4000);
+        </script>-->
+    </div>
 
     <script type="text/javascript">
         BVApp.utils.AppUtils.android =true;

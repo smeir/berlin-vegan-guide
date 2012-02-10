@@ -39,7 +39,7 @@ BVApp.views.OptionPanel = Ext.extend(Ext.Panel,{
                         afterrender: function (cmp){
                             cmp.on("check" ,function(cmp){
                                 BVApp.utils.AppUtils.alertMessage(BVApp.Main.getLangString("OptionsHint","de"), BVApp.Main.getLangString("OptionsPleaseRestart","de"));
-                                me.updateOptions();                      
+                                me.updateOptions();
                             });
                         }
                     }
@@ -88,28 +88,13 @@ BVApp.views.OptionPanel = Ext.extend(Ext.Panel,{
             }
             ]
         });
-        
+
         Ext.apply(this, {
             title: BVApp.Main.getLangString("Options"),
             iconCls: 'settings',
             scroll: true,
             items: [this.optionsForm],
-            dockedItems: [{
-                dock: 'top',
-                xtype: 'toolbar',
-                title: BVApp.Main.getLangString("Options") + "&nbsp;&nbsp;&nbsp;",
-                items: [{
-                    text: BVApp.Main.getLangString("OptionsInfo"),
-                    handler: this.showAbout,
-                    scope: this
-                },{
-                    xtype: "spacer"
-                },{
-                    text: BVApp.Main.getLangString("Contact"),
-                    handler: this.showContact,
-                    scope: this
-                }]
-            }],
+            dockedItems: this.createDockedItems(),
             autoDestroy: true
 
         });
@@ -131,5 +116,56 @@ BVApp.views.OptionPanel = Ext.extend(Ext.Panel,{
             body += BVApp.Main.getAppInfoPhoneGapForEMail();         
         }
         BVApp.utils.AppUtils.sendEMail(BVApp.Main.errorEMail,subject,body);
+    }
+    ,
+    createDockedItems : function(){
+        var dockedItems;
+        if(BVApp.utils.AppUtils.isAndroid()) {
+            dockedItems =[{
+                dock:'top',
+                xtype:'toolbar',
+                title:BVApp.Main.getLangString("Options"),
+                items:[
+                    {
+                        xtype:"spacer"
+                    },
+                    {
+                        iconMask:true,
+                        iconCls:'mail',
+                        handler:this.showContact,
+                        scope:this
+                    },                    {
+                        iconMask:true,
+                        iconCls:'info2',
+                        handler:this.showAbout,
+                        scope:this
+                    }
+                ]
+            }
+            ];
+        } else {
+            dockedItems = [{
+                dock:'top',
+                xtype:'toolbar',
+                title:BVApp.Main.getLangString("Options") + "&nbsp;&nbsp;&nbsp;",
+                items:[
+                    {
+                        text:BVApp.Main.getLangString("OptionsInfo"),
+                        handler:this.showAbout,
+                        scope:this
+                    },
+                    {
+                        xtype:"spacer"
+                    },
+                    {
+                        text:BVApp.Main.getLangString("Contact"),
+                        handler:this.showContact,
+                        scope:this
+                    }
+                ]
+            }
+            ];
+        }
+        return dockedItems;
     }
 });

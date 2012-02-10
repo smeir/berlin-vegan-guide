@@ -12,6 +12,7 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
     restaurantMainPanel: null,
     aboutPanel: null,
     favoriteRestaurantPanel:null,
+    recommendRestaurantPanel:null,
     
     initComponent: function () {
         var me = this;
@@ -21,10 +22,11 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
         this.restaurantMainPanel = new BVApp.views.LocationMainPanel();
         this.aboutPanel = new BVApp.views.AboutPanel();
         this.favoriteRestaurantPanel = new BVApp.views.LocationPanel();
+        this.recommendRestaurantPanel = new BVApp.views.LocationPanel();
          Ext.apply(this, {
             autoDestroy: true,
             layout: "card",
-            items: [this.mainTabPanel, this.restaurantMainPanel,this.favoriteRestaurantPanel,this.aboutPanel],
+            items: [this.mainTabPanel, this.restaurantMainPanel,this.recommendRestaurantPanel,this.favoriteRestaurantPanel,this.aboutPanel],
             cardSwitchAnimation: {
                 type: "slide",
                 cover: false
@@ -39,7 +41,7 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
             this.setActiveItem(this.restaurantMainPanel, animation);
             this.activeView = this.restaurantMainPanel;
         },this);
-
+        // favorite  TODO remove code duplication
         this.mainTabPanel.getFavoritesPanel().getFavoriteList().on("itemtap",function(list,index, item,event ){
             var animation = false;
             if(BVApp.utils.Settings.animation){
@@ -60,6 +62,28 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
             this.setActiveItem(this.mainTabPanel, animation);
             this.activeView = this.mainTabPanel;
         },this);
+        if (this.mainTabPanel.getRecommendationsPanel() !=null) { // recommend
+            this.mainTabPanel.getRecommendationsPanel().getRecommendationsList().on("itemtap", function (list, index, item, event) {
+                var animation = false;
+                if (BVApp.utils.Settings.animation) {
+                    animation = { type:"slide", cover:false};
+                }
+                var restaurant = list.getStore().getAt(index);
+                this.recommendRestaurantPanel.updateRestaurant(restaurant);
+                this.setActiveItem(this.recommendRestaurantPanel, animation);
+                this.activeView = this.recommendRestaurantPanel;
+            }, this);
+
+            this.recommendRestaurantPanel.on("back", function () {
+                var animation = false;
+                if (BVApp.utils.Settings.animation) {
+                    animation = { type:"slide", reverse:true};
+                }
+                this.mainTabPanel.getRecommendationsPanel().getRecommendationsList().getSelectionModel().deselectAll();
+                this.setActiveItem(this.mainTabPanel, animation);
+                this.activeView = this.mainTabPanel;
+            }, this);
+        }
 
         this.restaurantMainPanel.on("back",function(){
             var animation =false;

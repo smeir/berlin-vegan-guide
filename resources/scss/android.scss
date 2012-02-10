@@ -44,11 +44,14 @@ $page-bg-color: #F6F6F6 !default;
  @include pictos-iconmask('phone1');
  @include pictos-iconmask('compass3');
  @include pictos-iconmask('warning_black');
+  @include pictos-iconmask('bookmark2');
+    @include pictos-iconmask('mail');
+
 .x-docked-top .x-button { // keine rahmen um die Buttons auf der "actionbar"
-    border: none;
+ border: none;
     background-color: darken($base-color, 10%);
     margin: 0;
-    padding-left: 0.2em;
+    padding: 0.25em;
 }
 .x-button-toogle-on  img.x-icon-mask {
   background-color: yellow !important;
@@ -58,17 +61,17 @@ $page-bg-color: #F6F6F6 !default;
 }
 
 .x-toolbar {
-    height: $global-row-height - 0.4em;
+   height: $global-row-height - 0.2em;
 }
-.x-toolbar-title { // kleinerer Font als der default
-    font-size: 0.9em;
-    line-height: $global-row-height;
+.x-toolbar-title {
+//    font-size: 0.9em; // kleinerer Font als der default
+//    line-height: $global-row-height;
     text-align: left;
-    padding-left: 0.8em;
+    padding-left: 0.6em;
 }
 .details > .details-title {
     border-bottom: 1px solid #a8abb0;
 }
 .details-field {
-    padding: 0.3em;
+    padding-top: 0.5em;
 }

@@ -92,7 +92,7 @@ public class ExtJsStoreGenerator {
             builder.append("\nBVApp.models.Data[\""+fileName+"\"] =\"" + filesMap.get(fileName) +"\";" );
         }
         String path = "src" + File.separator + "data" +File.separator;
-        writeTextToFile(builder.toString(),path + "TextFiles.js");
+        writeTextToFile(builder.toString(),path + "Textfiles.js");
     }
 
     private String textEncode(String text) {

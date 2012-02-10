@@ -153,11 +153,13 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
         if(this.favoritesButton!=null){
             this.toggleButton(this.favoritesButton,this.isFavorite());
         }
-        var tel = this.currentRestaurant.get("telephone");
-        if(tel.length>0){ // show only if telephone number available
-            this.telCallButton.show();
-        }else{
-            this.telCallButton.hide();
+        if(this.telCallButton!=null){
+            var tel = this.currentRestaurant.get("telephone");
+            if(tel.length>0){ // show only if telephone number available
+                this.telCallButton.show();
+            }else{
+                this.telCallButton.hide();
+            }
         }
         this.descriptionPanel.update({text: ""}); // delete before ajax call
         var openTimes = this.getOpenTimesData(restaurant);
@@ -191,23 +193,15 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
                     });
                 }
             });
-            /*
-            Ext.Ajax.request({
-                url: 'resources/data/reviews/' + BVApp.utils.Settings.language +"/" + restaurant.get("nameID")+'.html',
-                scope:this,
-                success: function(response, opts) {
-                    this.descriptionPanel.update({
-                        text: response.responseText
-                    });
-                },
-                failure: function(response, opts) {
-                    console.log('server-side failure with status code ' + response.status);
-                    this.descriptionPanel.update({
-                        text: response.responseText
-                    });
-                }
+        }else{
+            this.descriptionPanel.update({
+                text: BVApp.Main.getLangString("DescriptionNotAvailable")
             });
-*/
+            if(this.detailsButton.el !== undefined){ // beim ersten mal noch nicht gerendert, so kein el vorhanden
+                this.switcherSegmentedButton.setPressed(this.detailsButton,true,true);
+                this.setActiveItem(this.detailsPanel);
+            }
+
         }
 
     },
