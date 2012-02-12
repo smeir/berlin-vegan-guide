@@ -75,3 +75,15 @@ $page-bg-color: #F6F6F6 !default;
 .details-field {
     padding-top: 0.5em;
 }
+
+.image-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: bottom;
+    margin-bottom: 0.3em;
+}
+
+.image-wrap img {
+    vertical-align: bottom;
+}
