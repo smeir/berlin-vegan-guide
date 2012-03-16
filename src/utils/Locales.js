@@ -31,7 +31,7 @@ BVApp.utils.Locales = {
         OptionsImperial: "Imperial",
         OptionsPleaseRestart: "Für den Sprachwechsel bitte die Applikation neu starten.",
         DetailsContact: "Kontakt",
-        DetailsAddress: "Andresse",
+        DetailsAddress: "Adresse",
         DetailsTelephone: "Telefon",
         DetailsBVG: "Öffentliche Verkehrsmittel",
         DetailsOpenTimes: "Öffnungszeiten",

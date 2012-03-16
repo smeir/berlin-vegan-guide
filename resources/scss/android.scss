@@ -47,6 +47,13 @@ $page-bg-color: #F6F6F6 !default;
   @include pictos-iconmask('bookmark2');
     @include pictos-iconmask('mail');
 
+// verhindert flickern und probleme auf HTC Geräten
+.x-panel {
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+
+
 .x-docked-top .x-button { // keine rahmen um die Buttons auf der "actionbar"
  border: none;
     background-color: darken($base-color, 10%);

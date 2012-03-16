@@ -20,11 +20,11 @@ BVApp.views.RecommendationsPanel = Ext.extend(Ext.Panel,{
             this.insert(0,record.copy());
         },this.recommendStore);
 
-        this.recommendStore.updateDistance();
+        /*this.recommendStore.updateDistance();
         this.recommendStore.sort({
             property: "distance",
             direction: "ASC"
-        });
+        });*/
 
         this.recommendationsList = new BVApp.views.LimitedList({
             maxItems: BVApp.Main.maxListItems,
@@ -32,7 +32,7 @@ BVApp.views.RecommendationsPanel = Ext.extend(Ext.Panel,{
             store: this.recommendStore,
             itemTpl: BVApp.templates.LocationListItemTemplate
         });
-        this.recommendationsList.bindStoreLimited(this.recommendStore);
+        //this.recommendationsList.bindStoreLimited(this.recommendStore);
 
         Ext.apply(this, {
             layout: 'fit',
@@ -61,5 +61,11 @@ BVApp.views.RecommendationsPanel = Ext.extend(Ext.Panel,{
         store.filter(store.notOmnivorFilter);
         store.filter(store.nowOpenFilter);
         store.updateDistance();*/
+
+        this.recommendStore.updateDistance();
+        this.recommendStore.sort({
+            property: "distance",
+            direction: "ASC"
+        });
     }
 });

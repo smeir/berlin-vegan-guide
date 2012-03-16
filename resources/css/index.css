@@ -1,10 +1,7 @@
 /*******************************************/
 /******************Extjs Patches*****************/
 /*******************************************/
-.x-panel {
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
-}
+
 /* Listen hintergrund*/
 
 /* in formularen oben und unten keinen zusätzlichen Abstand, z.b. bei den Filtern*/

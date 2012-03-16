@@ -35,7 +35,9 @@ $page-bg-color: #F6F6F6 !default;
 @include sencha-sheet;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
- 
+
+   @include pictos-iconmask('bookmark2');
+
 // restaurant liste
 
 /* listen Pfeil icon*/

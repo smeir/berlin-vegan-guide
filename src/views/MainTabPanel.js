@@ -52,7 +52,7 @@ BVApp.views.MainTabPanel = Ext.extend(Ext.TabPanel,{
                 }
             }
             if(index==1 && this.recommendationsPanel){ // recomendations
-                //this.recommendationsPanel.beforeActive();
+                this.recommendationsPanel.beforeActive();
                 if(this.recommendationsPanel.getRecommendationsList().getStore().getCount()===0){
                     BVApp.utils.AppUtils.alertMessage(BVApp.Main.getLangString("HelpTitle"),BVApp.Main.getLangString("HelpEmptyRecommendList"));
                 }
