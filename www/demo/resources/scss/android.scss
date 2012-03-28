@@ -1,0 +1,89 @@
+// Let's start with the basics
+$include-border-radius: false;
+$include-highlights: false;  // disable gradients
+
+$base-color: #89CE08;
+// matte, bevel, glossy, recessed, and flat
+$base-gradient: 'flat';
+
+// Buttons
+$button-gradient: 'flat';
+
+
+//$active-color: darken(saturate($base-color, 55%), 90%);
+//$active-color: #7c92ae;
+$tabs-dark: #9F9F9F;
+//$tabs-dark-active-color: #69A1EE;
+$tabs-dark-active-color:#78AADF;
+$tabs-bar-gradient: 'glossy';
+
+// Lists
+//$list-active-gradient: 'bevel';
+//$list-header-bg-color: transparentize(saturate($base-color, 10%), .25);
+//$list-header-gradient: 'matte';
+
+// Tabs
+$tabs-dark: #111;
+
+$page-bg-color: #F6F6F6 !default;
+
+@import 'sencha-touch/default/all';
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-list;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-sheet;
+@include sencha-msgbox;
+@include sencha-loading-spinner;
+
+
+ @include pictos-iconmask('phone1');
+ @include pictos-iconmask('compass3');
+ @include pictos-iconmask('warning_black');
+  @include pictos-iconmask('bookmark2');
+    @include pictos-iconmask('mail');
+
+.x-docked-top .x-button { // keine rahmen um die Buttons auf der "actionbar"
+ border: none;
+    background-color: darken($base-color, 10%);
+    margin: 0;
+    padding: 0.25em;
+}
+.x-button-toogle-on  img.x-icon-mask {
+  background-color: yellow !important;
+}
+.x-button-toogle-off  img.x-icon-mask{
+  background-color: white !important;
+}
+
+.x-toolbar {
+   height: $global-row-height - 0.2em;
+}
+.x-toolbar-title {
+//    font-size: 0.9em; // kleinerer Font als der default
+//    line-height: $global-row-height;
+    text-align: left;
+    padding-left: 0.6em;
+}
+.details > .details-title {
+    border-bottom: 1px solid #a8abb0;
+}
+.details-field {
+    padding-top: 0.5em;
+}
+
+.image-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: bottom;
+    margin-bottom: 0.3em;
+}
+
+.image-wrap img {
+    vertical-align: bottom;
+}

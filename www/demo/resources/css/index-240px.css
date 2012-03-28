@@ -1,0 +1,53 @@
+
+.x-tabbar.x-docked-bottom .x-tab {
+    min-width: 2em;
+}
+.x-toolbar-title {
+    font-size: 0.8em;
+    line-height: 3em;
+}
+.x-toolbar .x-button .x-button-label, .x-toolbar .x-button .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button .x-badge {
+    font-size: 0.6em;
+}
+
+.main-menu-wrapper{
+	padding: 5px;
+	float: left;
+	width: 80px;
+	font-size: 	12px;
+	font-weight: bold;
+	text-align: center;
+	opacity: 1;
+    height: 80px;
+}
+
+.row-label {
+    font-size: 0.6em;
+}
+
+.about {
+    font-size: 0.6em;
+
+}
+.description {
+    font-size: 0.7em;
+    margin: 0.6em;
+}
+
+.details-title {
+    font-size: 0.6em;
+}
+
+.details-label {
+    font-size: 0.6em;
+}
+
+.details-value {
+    font-size: 0.6em;
+}
+
+.details-value-full > ul >li {
+    font-size: 0.8em;
+}
+
+

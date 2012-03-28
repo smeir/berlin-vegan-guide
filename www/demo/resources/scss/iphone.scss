@@ -1,0 +1,68 @@
+// Let's start with the basics
+//$base-color: #89CE08;
+$base-color: #89CE08;
+// matte, bevel, glossy, recessed, and flat
+$base-gradient: 'matte';
+
+//$active-color: darken(saturate($base-color, 55%), 90%);
+//$active-color: #7c92ae;
+$tabs-dark: #9F9F9F;
+//$tabs-dark-active-color: #69A1EE;
+$tabs-dark-active-color:#78AADF;
+$tabs-bar-gradient: 'glossy';
+
+// Lists
+//$list-active-gradient: 'bevel';
+//$list-header-bg-color: transparentize(saturate($base-color, 10%), .25);
+//$list-header-gradient: 'matte';
+
+// Tabs
+$tabs-dark: #111;
+
+$page-bg-color: #F6F6F6 !default;
+
+@import 'sencha-touch/default/all';
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet; 
+@include sencha-toolbar-forms;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-sheet;
+@include sencha-msgbox;
+@include sencha-loading-spinner;
+
+   @include pictos-iconmask('bookmark2');
+
+// restaurant liste
+
+/* listen Pfeil icon*/
+.row-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-mask-box-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAYAAACQN/8FAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAF9JREFUeNpiZoAACSA+DMTPgfgmAw4gDcQ3gPg/EP8EYj98Cu9BFdJesTc+xbeJVWyPpPA/1BY2dEUqQPwESdETqBgKUMeiSJGQoodkK4JF3w1CipAV7wJiOVwKAAIMADmGLvoafh4wAAAAAElFTkSuQmCC');
+    position: absolute;
+    left: auto;
+    right: 7px;
+    top: 22px;
+    width: 10px;
+    height: 13px
+}
+
+// detailansicht
+
+.details-fieldset {
+    -webkit-border-radius: 0.6em;
+     border: 1px solid #a8abb0;
+         background: #FFFFFF;
+}
+.details-field {
+    border-bottom: 1px solid #a8abb0;
+    padding: 0.6em;
+}
+.main-menu-wrapper-selected{
+	-webkit-border-radius: 15px;
+}

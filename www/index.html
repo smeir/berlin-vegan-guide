@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html>
+<head>
+    <link rel="icon" href="fileadmin/vorlagen/images/favicon.gif" type="image/gif" />
+<!--    <script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>-->
+<!--    <script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>-->
+<!-- include jQuery library -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<!-- include Cycle plugin -->
+<script type="text/javascript" src="http://cloud.github.com/downloads/malsup/cycle/jquery.cycle.all.latest.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.slideshow').cycle({
+                fx:     'scrollLeft',
+                timeout: 6000,
+                before:  function(){
+                          $('#description').html(this.alt);
+                },
+                after:   function(){
+                },
+                  pager:  '#nav',
+                pagerAnchorBuilder: function(idx, slide) {
+                    return '<a href="#"></a>';
+                }
+            });
+        });
+    </script>
+    
+    <!--<base href="http://www.berlin-vegan.de/" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="KEYWORDS" content="Vegan, Vegetarisch, Berlin, Guide, Restaurants, Cafes, Tierrechte, Tierschutz, Umweltschutz" />
+	 <meta name="description" content="Berlin-Vegan APP: Mit dem "Berlin Vegan Guide" hast du unterwegs einen schnellen Überblick über die veganen Essens- und Einkaufsmöglichkeiten in Berlin." />
+        <meta content="index" name="robots" />
+    	<meta content="follow" name="robots" />
+	<meta content="all" name="audience" />	
+	<meta content="deutsch, de" name="language" />
+    	<meta content="global" name="distribution" />
+	<meta content="Worldwide" name="coverage" />
+    	<meta content="all" name="robots" />
+    	<meta content="Internet" name="page-topic" />
+    <title>Berlin Vegan APP - Vegane Restaurants, Bars, Einkaufsmöglichkeiten etc. in Berlin per GEO-Location auf deinem Handy finden.</title>
+
+
+
+  <style type="text/css">
+  body {
+   background: url(http://commondatastorage.googleapis.com/bvapppage/app_bg.jpg) no-repeat top center #213100;
+   text-shadow: 0 1px #000;
+   margin: 0;
+   padding: 0;
+   font-size: 100.01%;
+   color: #ddd;
+   overflow-x: hidden;
+ }
+
+
+#hauptwrapper, .footertext {
+  width: 960px;
+	margin: 0 auto;
+	text-align: left;
+  padding: 2em 0 0;
+  overflow: auto;
+}
+ 
+  h1 { 
+  font-family: Georgia, serif;
+  color: #9fd000;
+  margin: 2.7em 0 1em;
+  }
+  h2 { color: #9fd000; }
+	h3 { display: none; } 
+  
+  p, ul, #description {
+  font-family: Arial, sans-serif;
+  font-size: .84em;
+  line-height: 1.7em;
+  margin: 0 0 1.5em;
+  padding: 0;
+
+  }
+  ul #description { margin: 2em 0 0 1em; }
+  
+  p span { color: #9b9b9b; }
+  p span img { margin-left: .3em; }
+  
+  a { color: #9fd000; }
+  
+  input {
+  -moz-border-radius: .5em;
+  padding: .5em;
+  border: 1px solid #000;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.03, rgb(255,255,255)),
+    color-stop(0.97, rgb(220,220,220)),
+    color-stop(0.99, rgb(255,255,255))
+);
+background: -moz-linear-gradient(
+    center bottom,
+    rgb(255,255,255) 3%,
+    rgb(220,220,220) 97%,
+    rgb(255,255,255) 99%
+);
+
+  }
+  input#goog-wm-sb {
+  background: #648600;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.03, rgb(98,131,0)),
+    color-stop(0.97, rgb(130,173,0)),
+    color-stop(0.99, rgb(255,255,255))
+		);
+		background: -moz-linear-gradient(
+    center bottom,
+    rgb(98,131,0) 3%,
+    rgb(130,173,0) 97%,
+    rgb(255,255,255) 99%
+		);
+		margin-left: .5em;
+	}
+
+	li a b i {
+		font-style: normal;
+		font-weight: normal;
+	}
+
+  .apptext {
+		width: 227px;
+		float: left;
+		margin: 0 15px 2em 0;
+		color: #999;
+	}
+	.apptext img { margin-bottom: .5em; }
+	
+	#footer { 
+   background: url(http://commondatastorage.googleapis.com/bvapppage/bv_app_footer.png) no-repeat top center;
+   margin-top: 3em;
+   }
+	
+	.vierer {
+		width: 22%;
+		float: left;
+		margin: 10em 2em 2em 0;
+		font-size: .75em;
+		color: #cccccc;
+	}
+	.vierer.last { margin-right: 0; }
+	.vierer a { color: #cccccc; }
+  
+  .androidlink { 
+    display: block;
+    float: left;
+    height: 100px;
+    margin: 1.2em 0 0 2.4em;
+    text-indent: -9999px;
+    width: 100px; }
+  .applelink {     
+    display: block;
+    float: right;
+    height: 60px;
+    margin: 3em 0 0;
+    text-indent: -9999px;
+    width: 170px;
+    }
+
+  #nav a {
+      background: url("img/slider_inactive.png") no-repeat;
+      padding: 10px 2px 10px 10px;
+  }
+  #nav a.activeSlide {
+       background: url("img/slider_active.png") no-repeat;
+      padding: 10px 2px 10px 10px;
+	
+  }
+
+#slideshow img { display: none;margin:0;padding:0}
+#slideshow img.first { display: block }
+  </style>
+
+  
+
+</head>
+
+<body>
+<div id="hauptwrapper">
+    <p style="float: right; text-align: right;"><a href="index_en.html" title="view page in english" style="text-decoration:none;"><span>view page in english<img src="http://www.berlin-vegan.de/fileadmin/vorlagen/images/icon_gb.gif" alt="english" style="border: 0pt none;"></span></a></p>
+    <div style="margin: 8.5em 0pt 20em 30em; width: 380px;">
+        <h1>Die Berlin-Vegan App</h1>
+        <p>Mit dem "Berlin Vegan Guide" hast du unterwegs einen schnellen Überblick über die veganen Essens- und Einkaufsmöglichkeiten in Berlin. </p>
+        <ul>
+            <li>über 100 Restaurants, Imbisse und Eiscafés</li>
+            <li>mehr als 100 Cafés mit Sojamilch im Angebot</li>
+            <li>230 Bäckerei-Filialen mit kompletter Angebotsbeschreibung</li>
+            <li>weitere 100 Einkaufsmöglichkeiten im Bereich Drogerie, Bio und Supermarkt</li>
+
+        </ul>
+
+        <a href="https://market.android.com/details?id=org.berlin_vegan.bvapp" target="_blank" class="androidlink" title="im Android-Market laden">Android laden</a>
+        <a href="http://itunes.apple.com/de/app/berlin-vegan-guide/id435371382" target="_blank" class="applelink" title="im App-Store laden">iPhone laden</a>
+    </div>
+				
+				
+    <div style="float: left; width: 44%; margin: 0 3em 3em 0;">
+        <h2>Schnell, praktisch und lokal</h2>
+        <p>Alle Informationen wurden von uns in häufig verwendete Kategorien eingeteilt. Nach Auswahl einer Kategorie (z.B. Restaurants) werden die gefundenen Ergebnisse automatisch nach der Entfernung zu deinem aktuellen Standort sortiert und angezeigt. Anhand der Anzahl der Sterne erkennst du zusätzlich die Veganfreundlichkeit.</p>
+				<p>Der Guide berücksichtigt die Öffnungszeiten (sehr praktisch, wenn man am Sonntag morgen noch frische Brötchen benötigt) und ermöglicht es eigene Filter zu aktivieren.</p>
+                <p>Selbstverständlich ist der Guide nicht nur für Veganer geeignet, sondern für alle Menschen die versuchen ihr Leben tier- und klimafreundlich zu gestalten.</p>
+			</div>
+
+
+        <div style="float: left; width: 49%;">
+            <div style="float: left;margin-right: 1em;">
+                <div style="position:relative;">
+                    <img src="http://commondatastorage.googleapis.com/bvapppage/app_smartphone_bg.png"  alt="" />
+                    <div style="position:absolute;top:360px; left:68px" id="nav"></div>
+                    <div style="position:absolute;top:80px; left:14px;width:182px; height:262px" id="slideshow" class="slideshow">
+
+                        <img class="first" width="182" height="262" src="http://commondatastorage.googleapis.com/bvapppage/app_smartphone_2.png" alt="Die App erkennt beim Starten <strong>automatisch</strong>, wo man sich befindet und zeigt ortsbezogene Informationen an."/>
+                        <img  width="182" height="262" src="http://commondatastorage.googleapis.com/bvapppage/app_smartphone_1.png" alt="Schneller Zugriff durch <strong>umfangreiche Filtermöglichkeiten.</strong><br/><br/> <span style='color: #666;'><em>geöffnet<br/>vegan deklariert<br/>biologische Zutaten<br/>rohlstuhlgeignet<br/>Hunde erlaubt<br/>Lieferservice</em></span>"/>
+                        <img width="182" height="262" src="http://commondatastorage.googleapis.com/bvapppage/app_smartphone_3.png" alt="Jeder Ort kann als Favorit markiert werden und ist in der Favoritenansicht schnell aufzurufen."/>
+                        <img width="182" height="262" src="http://commondatastorage.googleapis.com/bvapppage/app_smartphone_4.png" alt="Die Kartenansicht ermöglicht die direkte Navigation zum ausgesuchten Ort, ohne dass man sich auskennen muss."/>
+                        <img width="182" height="262" src="http://commondatastorage.googleapis.com/bvapppage/app_smartphone_5.png" alt="Die App beinhaltet einen <strong>Vegan Passport</strong> für die Bedienung im Restaurant oder Hotel. Der Text wurde uns von der Vegan Society zur Verfügung gestellt."/>
+                        <img  width="182" height="262" src="http://commondatastorage.googleapis.com/bvapppage/app_smartphone_6.png" alt="Das gesamte Programm ist zweisprachig. Entfernungen können entweder in metrischen oder imperialen Einheiten angezeigt werden."/>
+                    </div>
+									</div>
+            </div>
+            <div id="description"  style="margin-top:10em;"></div>
+        </div>
+
+        <br style="clear: both" />
+        
+	    </div>
+
+
+        <div id="footer">
+        <div class="footertext">
+
+        <div class="vierer">
+        <p><strong>Projektteam:</strong><br />
+            Konzept & Programmierung: Sandy Meier<br />
+            Design: <a href="http://www.twilightrose.com/" target="_blank">Simona Vinati</a><br />
+            Datenrecherche: Andrea Hayn, Franziska Probst und weitere<br />
+            Texte: Jöran Fliege, Stephanie Johanna Goldbach, Simon Grünwald, <a href="http://veganheadchef.com/" target="_blank">Björn Moschinski</a>, Sven Nyga, Andreas Schneider,Sabrina Knoke und weitere<br />
+            Übersetzungen: <a href="http://www.bordier-texte.eu/" target="_blank">Caroline Bordier</a>, Lone Krause, Doreen Rothe, Simona Vinati</p>
+				</div>
+
+        <div class="vierer">
+        <p><strong>Support:</strong><br />
+					Die Applikation läuft auf Smartphones mit dem Betriebsystem iOS (ab 3.x) und Android (ab 2.x).<br />Weitere Betriebsysteme sind in Planung.</p>
+        <p>Bei Problemen oder Fragen zur App erreicht ihr uns per E-Mail an <a href="mailto:bvapp@berlin-vegan.org" title="E-Mail an Berlin Vegan">bvapp@berlin-vegan.org</a>.</p>
+				</div>
+
+        <div class="vierer">
+					<p><strong>Lizenz:</strong><br />
+					Programm steht unter der <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL v2</a>, Quelltext auf <a href="https://github.com/smeir/Berlin-Vegan-Guide">GitHub</a><br />
+					Design und Texte: <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a>.<br />
+					Vegan Passport: Copyright Vegan Society (mit freundlicher Genehmigung).</p>
+					<p>Copyright 2011 Berlin Vegan.</p>
+				</div>
+				
+        			
+	      <div class="vierer last">
+					<p><strong>Webseite:</strong><br />
+					Design: <a href="http://www.joeran-fliege.de" target="_blank">Jöran Fliege</a><br />
+					Übersetzungen: Zahra Topping</p>
+					<p>Der Berlin Vegan Guide ist ein Projekt von <a href="http://www.berlin-vegan.de" target="_blank">Berlin Vegan</a></p>
+				</div>
+			</div>	
+</div>
+<!-- Piwik --> 
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://berlin-vegan.de/piwik/" : "http://berlin-vegan.de/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 5);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://berlin-vegan.de/piwik/piwik.php?idsite=5" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+</body>
+</html>
+
+
+
+

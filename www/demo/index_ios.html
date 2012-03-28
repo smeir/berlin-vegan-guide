@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <!-- Change this if you want to allow scaling -->
+    <meta name="viewport" content="width=default-width; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Berlin Vegan Guide</title>
+    <!-- Sencha Touch CSS -->
+    <link rel="stylesheet" href="resources/css/iphone.css" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="resources/css/index.css" type="text/css">
+    <!-- Google Maps JS -->
+    <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+    <!-- Sencha Touch JS -->
+    <script type="text/javascript" src="lib/touch/sencha-touch.js"></script>
+    <!-- iPad/iPhone specific css below, add after your main css >
+	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />
+	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />
+	-->
+
+    <!--iOS-->
+    <script type="text/javascript" charset="utf-8" src="lib/iphone/phonegap_iphone.js"></script>
+    <script type="text/javascript" src="lib/iphone/EmailComposer.js"></script>
+    <script type="text/javascript" src="index-min.js"></script>
+
+    <!-- If you application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+    <script type="text/javascript" charset="utf-8" src="lib/iphone/json2.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        // If you want to prevent dragging, uncomment this section
+        function preventBehavior(e) {
+            e.preventDefault();
+        }
+        document.addEventListener("touchmove", preventBehavior, false);
+        function onBodyLoad(){
+            console.log("onBodyLoad()");
+            document.addEventListener("deviceready",onDeviceReady,false);
+
+        }
+        /* When this function is called, PhoneGap has been initialized and is ready to roll */
+        function onDeviceReady(){
+            console.log("onDeviceReady()");
+            BVApp.Main.init();
+        }
+        /** called if app is resumed (multitasking, fast app switching) */
+        function appActive() {
+            BVApp.Main.ui.determinePositionMask.show();
+            BVApp.utils.CurrentGeoPosition.updateLocation(function(){
+                console.log("appActive.updateLocation");
+                BVApp.Main.ui.locationReady.call(BVApp.Main.ui);
+            });
+
+        }
+    </script>
+
+    <!-- online data
+
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/ShopStoreData.js"></script>
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/RestaurantStoreData.js"></script>
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/CafeStoreData.js"></script>
+    <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/Textfiles.js"></script>
+    -->
+</head>
+<!--<body onload="onBodyLoad()">-->
+<body>
+<!-- Piwik -->
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://berlin-vegan.de/piwik/" : "http://berlin-vegan.de/piwik/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 6);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script><noscript><p><img src="http://berlin-vegan.de/piwik/piwik.php?idsite=6" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+</body>
+</html>

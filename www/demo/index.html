@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <!-- Change this if you want to allow scaling -->
+    <meta name="viewport" content="width=default-width; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Berlin Vegan Guide</title>
+    <!-- Sencha Touch CSS -->
+    <link rel="stylesheet" href="resources/css/iphone.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="resources/css/index.css" type="text/css">
+    <!-- Google Maps JS -->
+    <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+    <!-- Sencha Touch JS -->
+    <script type="text/javascript" src="lib/touch/sencha-touch-debug-w-comments.js"></script>
+    <!-- iPad/iPhone specific css below, add after your main css >
+	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
+	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
+	-->
+
+</head>
+<body>
+    <div id="sencha-app">
+    <script type="text/javascript" src="src/index.js"></script>
+    <div id="sencha-templates">
+        <script type="text/javascript" src="src/templates/LocationListItemTemplate.js"></script>
+        <script type="text/javascript" src="src/templates/HomeMenuTemplate.js"></script>
+        <script type="text/javascript" src="src/templates/RestaurantDescriptionTemplate.js"></script>
+        <script type="text/javascript" src="src/templates/RestaurantDetailsTemplate.js"></script>
+    </div>
+
+    <!-- Place your view files here -->
+    <div id="sencha-views">
+        <script type="text/javascript" src="src/views/MainPanel.js"></script>
+        <script type="text/javascript" src="src/views/MainTabPanel.js"></script>
+        <script type="text/javascript" src="src/views/HomePanel.js"></script>
+        <script type="text/javascript" src="src/views/HomeMenuDataView.js"></script>
+        <script type="text/javascript" src="src/views/LimitedList.js"></script>
+        <script type="text/javascript" src="src/views/LocationMainPanel.js"></script>
+        <script type="text/javascript" src="src/views/LocationListPanel.js"></script>
+        <script type="text/javascript" src="src/views/LocationPanel.js"></script>
+        <script type="text/javascript" src="src/views/LocationDescriptionPanel.js"></script>
+        <script type="text/javascript" src="src/views/LocationDetailsPanel.js"></script>
+        <script type="text/javascript" src="src/views/LocationActionSheet.js"></script>
+        <script type="text/javascript" src="src/views/LocationMapPanel.js"></script>
+        <script type="text/javascript" src="src/views/PassportPanel.js"></script>
+        <script type="text/javascript" src="src/views/FavoritesPanel.js"></script>
+        <script type="text/javascript" src="src/views/RecommendationsPanel.js"></script>
+        <script type="text/javascript" src="src/views/OptionPanel.js"></script>
+        <script type="text/javascript" src="src/views/AboutPanel.js"></script>
+        <script type="text/javascript" src="src/views/FilterPanel.js"></script>
+
+    </div>
+
+    <!-- Place your model files here, Stores: restaurantStore,cafeStore,shopStore,settingStore,favoriteStore -->
+    <div id="sencha-models">
+        <script type="text/javascript" src="src/data/Textfiles.js"></script>
+        <script type="text/javascript" src="src/models/LocationStore.js"></script>
+        <script type="text/javascript" src="src/models/HomeMenuStore.js"></script>
+        <script type="text/javascript" src="src/models/Restaurant.js"></script>
+        <script type="text/javascript" src="src/data/RestaurantStoreData.js"></script>
+        <script type="text/javascript" src="src/models/RestaurantStore.js"></script>
+        <script type="text/javascript" src="src/models/Location.js"></script>
+        <script type="text/javascript" src="src/data/ShopStoreData.js"></script>
+        <script type="text/javascript" src="src/models/ShopStore.js"></script>
+        <script type="text/javascript" src="src/data/CafeStoreData.js"></script>
+        <script type="text/javascript" src="src/models/CafeStore.js"></script>
+        <script type="text/javascript" src="src/models/Setting.js"></script>
+        <script type="text/javascript" src="src/models/SettingStore.js"></script>
+        <script type="text/javascript" src="src/models/Favorite.js"></script>
+        <script type="text/javascript" src="src/models/FavoriteStore.js"></script>
+        <script type="text/javascript" src="src/models/FavoriteListStore.js"></script>
+    </div>
+
+    <div id="sencha-utils">
+        <script type="text/javascript" src="src/utils/CurrentGeoPosition.js"></script>
+        <script type="text/javascript" src="src/utils/GeoUtils.js"></script>
+        <script type="text/javascript" src="src/utils/Format.js"></script>
+        <script type="text/javascript" src="src/utils/Settings.js"></script>
+        <script type="text/javascript" src="src/utils/Locales.js"></script>
+        <script type="text/javascript" src="src/utils/AppUtils.js"></script>
+    </div>
+
+    <!-- Place your controller files here -->
+    <div id="sencha-controllers">
+    </div>
+        <!--<script type="text/javascript" src="lib/include-min.js"></script>-->
+        <!--<script type="text/javascript">
+
+            var inclde = function() {
+                include([
+                   // "http://www.berlin-vegan.de/app/data/ShopStoreData.js",
+                  //  "http://www.berlin-vegan.de/app/data/RestaurantStoreData.js",
+                  //  "http://www.berlin-vegan.de/app/data/CafeStoreData.js",
+                    "http://www.berlin-vegan.de/app/data/Textfiles.js"
+                ], function(){
+                    console.log("READY");
+                    var store = Ext.StoreMgr.lookup(BVApp.Main.restaurantStoreID);
+                    //if(store) store.getProxy().getReader().readRecords(BVApp.data.RestaurantStoreData);
+
+                    if(store) {
+                        store.proxy.data = BVApp.data.RestaurantStoreData;
+                        store.load({
+                            data: BVApp.data.RestaurantStoreData
+                        });
+                    }
+                    /*for (var i = 0; i < BVApp.data.RestaurantStoreData.length; i++) {
+                        var obj = BVApp.data.RestaurantStoreData[i];
+                        var res = new BVApp.models.Restaurant(obj);
+                        store.add(res);
+
+                    } */
+
+
+                    store = Ext.StoreMgr.lookup(BVApp.Main.shopStoreID);
+                 //   if(store) store.loadData(BVApp.data.ShopStoreData,false);
+                    store = Ext.StoreMgr.lookup(BVApp.Main.cafeStoreID);
+                  //  if(store) store.loadData(BVApp.data.CafeStoreData,false);
+
+                });
+            };
+            var inclde2 = function(){
+                var store = Ext.StoreMgr.lookup(BVApp.Main.restaurantStoreID);
+                                    //if(store) store.getProxy().getReader().readRecords(BVApp.data.RestaurantStoreData);
+
+                                    if(store) {
+                                        store.proxy.data = BVApp.data.RestaurantStoreData;
+                                        store.load({
+                                            data: BVApp.data.RestaurantStoreData
+                                        });
+                                    }
+            };
+            setTimeout(inclde2,4000);
+        </script>-->
+    </div>
+
+    <script type="text/javascript">
+        //BVApp.utils.AppUtils.android =true;
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<project name="bvapp" basedir="." default="prod.android">
+    <property name="src.dir" value="."/>
+    <property name="build.dir" value="build"/>
+
+    <target name="prod.ios" depends="prod, copy.lib.ios">
+        <copy file="${src.dir}/index_ios.html" tofile="${build.dir}/index.html">
+        </copy>
+    </target>
+    <target name="prod.android" depends="prod, copy.lib.android">
+        <copy file="${src.dir}/index_android.html" tofile="${build.dir}/index.html">
+        </copy>
+    </target>
+    <target name="prod" depends="clean, js.minify, copy.resources"
+            description="Full production build">
+    </target>
+    <target name="clean">
+        <delete>
+            <fileset dir="${build.dir}" includes="**/*"/>
+        </delete>
+    </target>
+    <!--<target name="dev" depends="load.properties.dev, js.preprocess, js.check.syntax, copy.jsp, copy.image.files, copy.css.files, copy.js.files, compile.jsp, copy.properties.files, compile.webapps, copy.libs"
+            description="Development build">
+    </target>
+    <target name="prod1" depends="load.properties.prod, js.preprocess, js.check.syntax, js.concatenate, js.minify, copy.jsp, copy.image.files, copy.css.files, copy.js.files, compile.jsp, copy.properties.files, compile.webapps, copy.libs"
+            description="Full production build">
+    </target>-->
+
+    <target name="load.properties.dev">
+        <property name="js.preprocess.switches" value="-P -DDEBUG_VERSION=1"/>
+        <property name="js.compressor.switches" value="--nomunge --line-break"/>
+    </target>
+
+    <target name="load.properties.prod">
+        <property name="js.preprocess.switches" value="-P -DDEBUG_VERSION=0"/>
+        <property name="js.compressor.switches" value=""/>
+    </target>
+    <target name="copy.resources">
+        <copy todir="${build.dir}/resources">
+            <fileset dir="${src.dir}/resources">
+				<exclude name="scss/**" />
+                <exclude name="data/**" />
+			</fileset>
+        </copy>
+    </target>
+    <target name="copy.lib.ios" depends="copy.lib">
+        <copy todir="${build.dir}/lib/iphone">
+            <filelist dir="${src.dir}/lib/iphone"
+                      files="EmailComposer.js,phonegap_iphone.js,json2.js">
+            </filelist>
+        </copy>
+    </target>
+    <target name="copy.lib.android" depends="copy.lib">
+        <copy todir="${build.dir}/lib/android">
+            <filelist dir="${src.dir}/lib/android/"
+                      files="webintent.js"/>
+        </copy>
+        <copy todir="${build.dir}/lib/android">
+            <filelist dir="${src.dir}/lib/android"
+                      files="phonegap_android.js">
+            </filelist>
+        </copy>
+    </target>
+    <target name="copy.lib">
+        <copy todir="${build.dir}/lib/touch">
+            <filelist dir="${src.dir}/lib/touch/"
+                      files="sencha-touch.js"/>
+        </copy>
+    </target>
+    <target name="js.concatenate">
+        <concat destfile="${build.dir}/index.js">
+            <filelist dir="${src.dir}/src"
+                      files="index.js"/>
+            <fileset dir="${src.dir}/src/templates"
+                     includes="*.js"
+                     />
+            <fileset dir="${src.dir}/src/views"
+                     includes="*.js"
+                    />
+            <fileset dir="${src.dir}/src/data"
+                     includes="*.js"
+                    />
+            <filelist dir="${src.dir}/src/models"
+                      files="LocationStore.js, HomeMenuStore.js, Restaurant.js RestaurantStore.js, Location.js, ShopStore.js,CafeStore.js,Setting.js,SettingStore.js,Favorite.js, FavoriteStore.js,FavoriteListStore.js"
+                    />
+        
+            <fileset dir="${src.dir}/src/utils"
+                     includes="*.js"
+                    />
+        </concat>
+    </target>
+
+    <target name="js.minify" depends="js.concatenate">
+        <apply executable="java" parallel="false">
+            <fileset dir="${build.dir}" includes="index.js"/>
+            <arg line="-jar"/>
+            <arg path="lib/tools/ycompressor.jar"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.js" to="${build.dir}/*-min.js"/>
+            <targetfile/>
+        </apply>
+        <delete file="${build.dir}/index.js"/>
+    </target>
+</project>

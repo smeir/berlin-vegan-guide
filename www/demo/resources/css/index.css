@@ -1,0 +1,243 @@
+/*******************************************/
+/******************Extjs Patches*****************/
+/*******************************************/
+.x-panel {
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+/* Listen hintergrund*/
+
+/* in formularen oben und unten keinen zusätzlichen Abstand, z.b. bei den Filtern*/
+.x-form-fieldset {
+    margin: 0px;
+}
+/*vegan passport icon*/
+.x-tab img.emergency, .x-button img.x-icon-mask.emergency {
+    -webkit-mask-image: url('../images/emergency.png')
+}
+/*info/settings icon*/
+.x-tab img.info2, .x-button img.x-icon-mask.info2 {
+    -webkit-mask-image: url('../images/info2.png')
+}
+.x-tab img.doc2, .x-button img.x-icon-mask.doc2 {
+    -webkit-mask-image: url('../images/doc2.png')
+}
+
+
+.x-tab img.berlinmap, .x-button img.x-icon-mask.berlinmap {
+    -webkit-mask-image: url('../images/berlinmap.png')
+}
+.x-slider {
+    height:1.5em
+}
+.x-thumb::before {
+    height:1.2em
+}
+.x-mask .x-loading-msg {
+    font-size: 0.8em
+}
+
+/*OLD 1.0*/
+/*backbutton kleiner abstand*/
+/*.x-button-back, .x-toolbar .x-button-back {
+    margin-left: 0.3em;
+}*/
+
+/* credits*/
+h1 {
+  color: #648d1a !important;
+  font-weight: bold;
+  xtext-shadow: 1px 1px #ddd;
+    font-size: 1.3em;
+    line-height:2em;
+}
+
+h2 {
+  color: #648d1a !important;
+  font-weight: bold;
+  xtext-shadow: 1px 1px #ddd;
+    font-size: 1.1em;
+    line-height:1.5em;
+}
+
+
+
+/*******************************************/
+/******************Homemenu*****************/
+/*******************************************/
+
+.homepageMainMenu{
+    background-image: url('../images/background.png');
+    background-position: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 1em;
+}
+
+.main-menu-wrapper{
+	padding: 15px;
+	float: left;
+	width: 105px;
+	font-size: 	0.9em;
+/*	font-weight: bold;*/
+	text-align: center;
+	height: 108px;
+	opacity: 1;
+}
+
+
+.main-menu-wrapper_old{
+	padding: 10px;
+	float: left;
+	width: 100px;
+	font-size: 	0.7em;
+	font-weight: bold;
+	text-align: center;
+	height: 100px;
+	opacity: 1;
+}
+
+.main-menu-wrapper-selected{
+	background-color: rgba(255, 255, 255, 0.292969);
+}
+
+
+/*******************************************/
+/**********Restaurantliste******************/
+/*******************************************/
+
+
+/* listen div*/
+.row-section {
+    
+}
+/* label, restaurant name*/
+.row-label {
+    font-size: 0.9em;
+    font-weight: bold
+}
+
+/* Sub-Label, restaurant Strasse*/
+.row-sublabel {   
+    font-size: 0.7em;
+    max-width: 19em;
+}
+/* Restaurantentfernung*/
+.row-distance {
+    font-size: 0.7em;
+    font-weight: bold;
+    position: absolute;
+    left: auto;
+    right: 20px;
+    top: 20px;
+}
+.row-star1:after {
+    content: url('../images/stern.gif');
+}
+
+.row-star2:after {
+    content: url('../images/stern.gif') url('../images/stern.gif');
+}
+.row-star3:after {
+    content: url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif');
+}
+.row-star4:after {
+    content: url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif');
+}
+.row-star5:after {
+    content: url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif') url('../images/stern.gif');
+}
+
+
+.about {
+    font-size: 0.85em;
+    margin: 0.7em;
+    text-align:center;
+}
+/*******************************************/
+/**********Location***********************/
+/*******************************************/
+
+.helpdescription {
+    font-size: 0.7em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 0.5em;
+}
+
+.description {
+    font-size: 0.9em;
+    margin: 0.7em;
+}
+.description  .small {
+    font-size: 0.7em;    
+}
+.description > ul >li {
+    list-style:disc;
+    margin-left: 2em;
+    padding-left: .1em;
+}
+.details {
+    margin: 0.7em;
+}
+
+.details-title {
+    font-size: 0.8em;
+    color: #4D4D70;
+    font-weight: bold;
+    padding-left:0.6em;
+    padding-bottom:0.4em;
+    text-shadow: rgba(255, 255, 255, 0.746094) 1px 1px 0px;
+}
+
+.details-fieldset {
+    position: relative;
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+
+.details-label {
+    font-size: 0.8em;
+    padding-right: 0.6em;
+    font-weight: bold;
+    width: 30%;
+    text-align:right;
+    color:#5e6d8e;
+}
+.details-value-full {
+    text-shadow: rgba(255, 255, 255, 0.246094) 0px 0.08em 0px;
+    text-align:left;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.details-value {
+    text-shadow: rgba(255, 255, 255, 0.246094) 0px 0.08em 0px;
+    text-align:left;
+    font-size: 0.8em;
+    font-weight: bold;
+    max-width: 14em;
+}
+.details-value-full > ul >li {
+    list-style:disc;
+    margin-left: 1.5em;
+}
+.details-value  a {
+    text-shadow: rgba(255, 255, 255, 0.246094) 0px 0.08em 0px;
+    text-align:left;
+    font-size: 1.0em;
+    font-weight: bold;
+    text-decoration:none;
+    color:black;
+    vertical-align: center;
+}
+.details-field {
+    display: -webkit-box;
+}
+.details-field:last-child {
+    border:none;
+}
+
+
