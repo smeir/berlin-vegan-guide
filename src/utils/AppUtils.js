@@ -95,8 +95,13 @@ BVApp.utils.AppUtils = {
          */
             
         var lang ="de";
+        var result;
         if(navigator.userAgent.match(/android/i)){
-            lang = navigator.userAgent.match(/android.*\W(\w\w)-(\w\w)\W/i)[1];
+            result = navigator.userAgent.match(/android.*\W(\w\w)-(\w\w)\W/i);
+            if(result && result.length == 2){
+                lang = result[1];
+            }
+
         }else{
             if(navigator.language.indexOf("en") !== -1){
                 lang = "en";

@@ -26,7 +26,7 @@ BVApp.data.CafeStoreData=[
 ["Coffee Star","cafe","Cafe","Wörther Str. 23","10405","52.53562","13.42133","030/47378502","","","","","","","","","www.coffeestar.net","","",""],
 ["Coffee Star","cafe","Cafe","Müllerstr. 146","13353","52.54746","13.35639","030/45482893","8 - 19:30","8 - 19:30","8 - 19:30","8 - 19:30","8 - 19:30","10 - 16","","","www.coffeestar.net","","",""],
 ["coffeemamas Kaffeerösterei","cafe","Cafe","Kirchstrasse 2","10557","52.52415","13.34914","0179/2342937","","","","","","","","","www.coffeemamas.de","","",""],
-["coffeemamas Kaffeerösterei","cafe","Cafe","Kurfürstendamm 72","10709","52.50025","13.30596","","7 - 20","7 - 20","7 - 20","7 - 20","7 - 20","9 - 20","10 - 17","","www.coffeemamas.de","","",""],
+["Einstein","cafe","Cafe","Kurfürstendamm 72","10709","52.50025","13.30596","","7:30 - 20","7:30 - 20","7:30 - 20","7:30 - 20","7:30 - 20","9 - 20","10 - 17","","www.coffeemamas.de","","",""],
 ["Coffeeshop Company","cafe","Cafe","Friedrichstraße 194  ","10117","52.50997","13.38974","","","","","","","","","","www.coffeeshopcompany.com","","",""],
 ["Coffeeshop Company","cafe","Cafe","Schönhauser Allee 79  ","10439","52.54974","13.41433","","","","","","","","","","www.coffeeshopcompany.com","","",""],
 ["Coffeeshop Company","cafe","Cafe","Alte Potsdamer Straße 7 D  ","10785","52.50684","13.37384","","","","","","","","","","www.coffeeshopcompany.com","","",""],

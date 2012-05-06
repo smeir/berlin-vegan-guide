@@ -114,7 +114,7 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
             this.activeView = this.mainTabPanel;
         },this);
         // register key event for android
-        document.addEventListener("backKeyDown",function(){
+        document.addEventListener("backbutton",function(){
             me.doBackKeyDown.call(me);
         });
 
@@ -128,7 +128,7 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
     doBackKeyDown: function (){
         if(this.activeView === this.mainTabPanel){
             console.log("exitApp:");
-            BackButton.exitApp();
+            device.exitApp();
         }else{
             // call the "back" method on the current view
             this.activeView.doBack.call(this.activeView);

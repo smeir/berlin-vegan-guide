@@ -56,7 +56,7 @@
         </copy>
         <copy todir="${build.dir}/lib/android">
             <filelist dir="${src.dir}/lib/android"
-                      files="phonegap_android.js">
+                      files="phonegap.0.9.6.min.js">
             </filelist>
         </copy>
     </target>
