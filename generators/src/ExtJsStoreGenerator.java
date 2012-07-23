@@ -13,17 +13,14 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 
-public class ExtJsStoreGenerator {
-    private SpreadsheetService service;
-    private FeedURLFactory factory;
+public class ExtJsStoreGenerator extends Generator {
+
     public static final String REVIEW_DE_BASE_URL = "http://www.berlin-vegan.de/berlin/restaurantkritiken/";
     public static final String LANG_DE="de";
     public static final String LANG_EN="en";
 
     public ExtJsStoreGenerator(String username,String password) throws AuthenticationException {
-        factory = FeedURLFactory.getDefault();
-        service = new SpreadsheetService("store-generator");
-        service.setUserCredentials(username, password);
+        super(username,password);
     }
 
     public static void main(String[] args) throws Exception {
@@ -95,13 +92,6 @@ public class ExtJsStoreGenerator {
         writeTextToFile(builder.toString(),path + "Textfiles.js");
     }
 
-    private String textEncode(String text) {
-        text = text.replaceAll("\"","\\\\\"");
-        text = text.replaceAll("\n","");
-        text = text.replaceAll("\r","");
-        return text;
-    }
-
     private static String readFileAsString(String filePath) throws java.io.IOException{
         StringBuilder fileData = new StringBuilder(1000);
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -152,20 +142,6 @@ public class ExtJsStoreGenerator {
         generateStore(cafeEntries, "CafeStoreData", path);
     }
 
-    private  List<ListEntry> addEntries(List<ListEntry> restaurantEntries, SpreadsheetEntry spreadsheet) throws IOException, ServiceException {
-        URL listFeedUrl = spreadsheet.getDefaultWorksheet().getListFeedUrl();
-        ListFeed feed = getFeed(listFeedUrl);
-        if(restaurantEntries == null){
-            restaurantEntries = feed.getEntries();
-        }else {
-            restaurantEntries.addAll(feed.getEntries());
-        }
-        return restaurantEntries;
-    }
-
-    private ListFeed getFeed(URL listFeedUrl) throws IOException, ServiceException {
-        return service.getFeed(listFeedUrl, ListFeed.class);
-    }
     private void generateStore(List<ListEntry> entries, String storeName, String path) throws IOException, ServiceException {
         StringBuilder outStr = new StringBuilder();
         outStr.append("BVApp.data." + storeName + "=[\n");
@@ -196,19 +172,7 @@ public class ExtJsStoreGenerator {
         outStr.append("\n];");
         writeTextToFile(outStr.toString(),path + File.separator + storeName + ".js");
     }
-    private void writeTextToFile(String text,String filePath) throws IOException {
-        Writer output = null;          
-        File file = new File(filePath);
-        output = new BufferedWriter(new FileWriter(file));
-        output.write(text);
-        output.close();        
-    }
 
-    public List<SpreadsheetEntry> getSpreadsheetEntries() throws Exception {
-        SpreadsheetFeed feed = service.getFeed(
-                factory.getSpreadsheetsFeedUrl(), SpreadsheetFeed.class);
-        return feed.getEntries();
-    }
     private List<File> getFileListing(File startDir) throws FileNotFoundException {
         List<File> result = new ArrayList<File>();
         File[] filesAndDirs = startDir.listFiles();
