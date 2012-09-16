@@ -1,5 +1,3 @@
-import com.google.gdata.client.spreadsheet.FeedURLFactory;
-import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.*;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
@@ -10,7 +8,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.*;
-import java.net.URL;
 import java.util.*;
 
 public class ExtJsStoreGenerator extends Generator {
@@ -18,6 +15,12 @@ public class ExtJsStoreGenerator extends Generator {
     public static final String REVIEW_DE_BASE_URL = "http://www.berlin-vegan.de/berlin/restaurantkritiken/";
     public static final String LANG_DE="de";
     public static final String LANG_EN="en";
+    public static final String TABLE_RESTAURANTS = "Restaurants";
+    public static final String TABLE_SUBWAY = "Subway";
+    public static final String TABLE_SHOPPING = "Shopping";
+    public static final String TABLE_BACKWAREN = "Backwaren";
+    public static final String TABLE_BIO_REFORM = "BioReform";
+    public static final String TABLE_CAFES = "Cafes";
 
     public ExtJsStoreGenerator(String username,String password) throws AuthenticationException {
         super(username,password);
@@ -68,7 +71,7 @@ public class ExtJsStoreGenerator extends Generator {
         // scrape data from website for all locations
         List<ListEntry> restaurantEntries = null;
         for (SpreadsheetEntry spreadsheet : getSpreadsheetEntries()) {
-            if (spreadsheet.getTitle().getPlainText().equals("Restaurants")) {
+            if (spreadsheet.getTitle().getPlainText().equals(TABLE_RESTAURANTS)) {
                 restaurantEntries = addEntries(restaurantEntries, spreadsheet);
             }
         }
@@ -86,7 +89,7 @@ public class ExtJsStoreGenerator extends Generator {
         StringBuilder builder = new StringBuilder();
         builder.append("BVApp.models.Data= [];");
         for (String fileName : filesMap.keySet()) {
-            builder.append("\nBVApp.models.Data[\""+fileName+"\"] =\"" + filesMap.get(fileName) +"\";" );
+            builder.append("\nBVApp.models.Data[\"").append(fileName).append("\"] =\"").append(filesMap.get(fileName)).append("\";");
         }
         String path = "src" + File.separator + "data" +File.separator;
         writeTextToFile(builder.toString(),path + "Textfiles.js");
@@ -124,14 +127,14 @@ public class ExtJsStoreGenerator extends Generator {
         List<ListEntry> cafeEntries = null;
         for (SpreadsheetEntry spreadsheet : getSpreadsheetEntries()) {
             String title = spreadsheet.getTitle().getPlainText();
-            if (title.equals("Restaurants")
-                    || title.equals("Subway")) {
+            if (title.equals(TABLE_RESTAURANTS)
+                    || title.equals(TABLE_SUBWAY)) {
                 restaurantEntries = addEntries(restaurantEntries, spreadsheet);
-            }else if (title.equals("Shopping")
-                    || title.equals("Backwaren")
-                    || title.equals("BioReform")) {
+            }else if (title.equals(TABLE_SHOPPING)
+                    || title.equals(TABLE_BACKWAREN)
+                    || title.equals(TABLE_BIO_REFORM)) {
                 shoppingEntries= addEntries(shoppingEntries, spreadsheet);
-            }else if(title.equals("Cafes")){
+            }else if(title.equals(TABLE_CAFES)){
                 cafeEntries = addEntries(cafeEntries, spreadsheet);
             }
 
@@ -144,7 +147,7 @@ public class ExtJsStoreGenerator extends Generator {
 
     private void generateStore(List<ListEntry> entries, String storeName, String path) throws IOException, ServiceException {
         StringBuilder outStr = new StringBuilder();
-        outStr.append("BVApp.data." + storeName + "=[\n");
+        outStr.append("BVApp.data.").append(storeName).append("=[\n");
         Iterator iter = entries.iterator();
         while (iter.hasNext()) {
             ListEntry entry = (ListEntry) iter.next();
@@ -159,7 +162,7 @@ public class ExtJsStoreGenerator extends Generator {
                 }else {
                     value = "";
                 }
-                outStr.append("\"" + value + "\"");
+                outStr.append("\"").append(value).append("\"");
                 if (iterColum.hasNext()) { // if not the last one, append a comma
                     outStr.append(",");
                 }
@@ -176,14 +179,19 @@ public class ExtJsStoreGenerator extends Generator {
     private List<File> getFileListing(File startDir) throws FileNotFoundException {
         List<File> result = new ArrayList<File>();
         File[] filesAndDirs = startDir.listFiles();
-        List<File> filesDirs = Arrays.asList(filesAndDirs);
-        for(File file : filesDirs) {
-            if(file.getPath().contains(".html")){
-                result.add(file);
-            }
-            if ( ! file.isFile() ) { // if directory            
-                List<File> deeperList = getFileListing(file);
-                result.addAll(deeperList);
+        List<File> filesDirs = null;
+        if (filesAndDirs != null) {
+            filesDirs = Arrays.asList(filesAndDirs);
+        }
+        if (filesDirs != null) {
+            for(File file : filesDirs) {
+                if(file.getPath().contains(".html")){
+                    result.add(file);
+                }
+                if ( ! file.isFile() ) { // if directory
+                    List<File> deeperList = getFileListing(file);
+                    result.addAll(deeperList);
+                }
             }
         }
         return result;
