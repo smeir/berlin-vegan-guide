@@ -23,7 +23,7 @@ BVApp.utils.AppUtils = {
         if(this.isPhoneGap()){
             if(this.isIPhone()){
              window.plugins.emailComposer.showEmailComposer(subject,body,email);
-            }else if(this.isAndroid()){                
+            }else if(this.isAndroid()){
                 var extras = {};
                 extras[WebIntent.EXTRA_SUBJECT] = subject;
                 extras[WebIntent.EXTRA_TEXT] = body;
@@ -87,6 +87,25 @@ BVApp.utils.AppUtils = {
         }
 
     },
+
+    hasConnection: function(){
+        var connection = true;
+        if(this.isPhoneGap()){
+            var networkState = navigator.network.connection.type;
+            if(networkState == Connection.NONE){
+                connection = false;
+            }
+
+        }
+     return connection;
+    },
+    quitApp: function(){
+        if (navigator.app && navigator.app.exitApp) {
+            navigator.app.exitApp();
+        } else if (navigator.device && navigator.device.exitApp) {
+            navigator.device.exitApp();
+        }
+    },
     getUserLanguage: function(){
         /*PhoneGap on Android would always return EN in navigator.*language.
          so parse userAggent
@@ -107,6 +126,9 @@ BVApp.utils.AppUtils = {
                 lang = "en";
             }
 
+        }
+        if(lang !== "de" && lang !== "en"){
+            lang = "en"; // en default for all unknow languages
         }
         return lang;
     }

@@ -4,7 +4,7 @@ Ext.namespace('BVApp','BVApp.views','BVApp.models','BVApp.templates','BVApp.util
 BVApp.Main = {
     ui: null,
     errorEMail: "bvapp@berlin-vegan.org",
-    version: "1.3.6",
+    version: "1.4",
     favoriteListStoreID: "favoriteListStore",
     favoriteStoreID: "favoriteStore",
     restaurantStoreID: "restaurantStore",
@@ -12,7 +12,7 @@ BVApp.Main = {
     shopStoreID: "shopStore",
     maxListItems: 13,
     maxToolbarLetters: 14, // word length in toolbar
-    timeoutLocationRequest: 4000, // in miliseconds
+    timeoutLocationRequest: 6000, // in miliseconds
 
     /* if app starts and find an location in that distance,
     just nav to it instantly, in meter*/
@@ -160,6 +160,7 @@ BVApp.Main = {
         return record;
     }
 };
+
 Ext.setup({
     icon: 'resources/images/icon.png',
             tabletStartupScreen: 'tablet_startup.png',
@@ -168,7 +169,20 @@ Ext.setup({
             glossOnIcon: true,
             onReady: function() {
                 console.log("Ext.setup.onReady");
-                // lood google maps asynchrone
+                if(!BVApp.utils.AppUtils.hasConnection()){ // no internet connection, so quit the app
+                    var lang = BVApp.utils.AppUtils.getUserLanguage();
+                    alert(BVApp.utils.Locales[lang]["NoConnection"]);
+                    BVApp.utils.AppUtils.quitApp();
+
+                    /*BVApp.utils.AppUtils.alertMessage(
+                        BVApp.Main.getLangString("NoConnectionTitle",lang),
+                        BVApp.Main.getLangString("NoConnection",lang),
+                        function(){ // callback from alert
+                        }
+                    );
+                    */
+                }
+                // load google maps asynchrone
                 var script = document.createElement("script");
                 script.type = "text/javascript";
                 script.src = "http://maps.googleapis.com/maps/api/js?sensor=true&callback=Ext.emptyFn";

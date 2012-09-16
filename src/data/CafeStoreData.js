@@ -1,4 +1,4 @@
-BVApp.data.CafeStoreData=[
+Ext.namespace('BVApp','BVApp.data','BVApp.models');BVApp.data.CafeStoreData=[
 ["Ankerklause","cafe","Cafe","Kottbusser Damm 104","10967","52.49555","13.42101","030/6935649","16 - ","9 - ","9 - ","9 - ","9 - ","9 - ","9 - ","","www.ankerklause.de","","",""],
 ["back.art","cafe","Cafe, Backwaren","Dieffenbachstr. 12","10967","52.49288","13.41476","030/69532820","6 - 19","6 - 19","6 - 19","6 - 19","","","","","","","","sonntags auch vegane kuchen"],
 ["Balzac Coffee","cafe","Cafe","Karl-Liebknecht Straße 5  ","10178","52.51982","13.4034","","7:30 - 20:30","7:30 - 20:30","7:30 - 20:30","7:30 - 20:30","7:30 - 20:30","8 - 22","8 - 21:30","","www.balzaccoffee.com","","",""],

@@ -3,7 +3,7 @@ BVApp.utils.Settings = new Object({
     animation: null,
     distanceUnit: null,
     language: null,
-    filterNowOpen: true,
+    filterNowOpen: false,
     filterVeganDeclared: false,
     filterWheelChair: false,
     filterOrganic: false,
@@ -19,9 +19,7 @@ BVApp.utils.Settings = new Object({
     init: function(){
         console.log("Settings:init");
         var language = BVApp.utils.AppUtils.getUserLanguage();
-        if(language !== "de" && language !== "en"){
-            language = "en"; // en default for all unknow languages
-        }
+
         var distanceUnit = language==="de" ? "metric" : "imperial";
         
 

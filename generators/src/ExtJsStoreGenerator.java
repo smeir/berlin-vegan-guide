@@ -21,6 +21,7 @@ public class ExtJsStoreGenerator extends Generator {
     public static final String TABLE_BACKWAREN = "Backwaren";
     public static final String TABLE_BIO_REFORM = "BioReform";
     public static final String TABLE_CAFES = "Cafes";
+    public static final String EXT_NAMESPACE_BVAPP = "Ext.namespace('BVApp','BVApp.data','BVApp.models');";
 
     public ExtJsStoreGenerator(String username,String password) throws AuthenticationException {
         super(username,password);
@@ -87,6 +88,7 @@ public class ExtJsStoreGenerator extends Generator {
             }
         }
         StringBuilder builder = new StringBuilder();
+        builder.append(EXT_NAMESPACE_BVAPP);
         builder.append("BVApp.models.Data= [];");
         for (String fileName : filesMap.keySet()) {
             builder.append("\nBVApp.models.Data[\"").append(fileName).append("\"] =\"").append(filesMap.get(fileName)).append("\";");
@@ -147,6 +149,7 @@ public class ExtJsStoreGenerator extends Generator {
 
     private void generateStore(List<ListEntry> entries, String storeName, String path) throws IOException, ServiceException {
         StringBuilder outStr = new StringBuilder();
+        outStr.append(EXT_NAMESPACE_BVAPP);
         outStr.append("BVApp.data.").append(storeName).append("=[\n");
         Iterator iter = entries.iterator();
         while (iter.hasNext()) {
