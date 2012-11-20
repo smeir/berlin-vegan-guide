@@ -62,7 +62,16 @@ h2 {
 /*******************************************/
 /******************Homemenu*****************/
 /*******************************************/
+.noConnectionPanel{
+    background-image: url('../images/background.png');
+    background-position: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
 
+}
 .homepageMainMenu{
     background-image: url('../images/background.png');
     background-position: 100% 100%;
@@ -73,6 +82,7 @@ h2 {
     background-repeat: no-repeat;
     padding-top: 1em;
 }
+
 
 .main-menu-wrapper{
 	padding: 15px;

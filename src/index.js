@@ -169,10 +169,12 @@ Ext.setup({
             glossOnIcon: true,
             onReady: function() {
                 console.log("Ext.setup.onReady");
-                if(!BVApp.utils.AppUtils.hasConnection()){ // no internet connection, so quit the app
-                    var lang = BVApp.utils.AppUtils.getUserLanguage();
-                    alert(BVApp.utils.Locales[lang]["NoConnection"]);
-                    BVApp.utils.AppUtils.quitApp();
+                if(!BVApp.data.RestaurantStoreData){ // no internet connection, so quit the app
+                    new BVApp.views.NoConnectionPanel();
+                    //noConnectionPanel.show();
+                    //var lang = BVApp.utils.AppUtils.getUserLanguage();
+                    //alert(BVApp.utils.Locales[lang]["NoConnection"]);
+                    //BVApp.utils.AppUtils.quitApp();
 
                     /*BVApp.utils.AppUtils.alertMessage(
                         BVApp.Main.getLangString("NoConnectionTitle",lang),
@@ -181,14 +183,15 @@ Ext.setup({
                         }
                     );
                     */
-                }
-                // load google maps asynchrone
-                var script = document.createElement("script");
-                script.type = "text/javascript";
-                script.src = "http://maps.googleapis.com/maps/api/js?sensor=true&callback=Ext.emptyFn";
-                document.body.appendChild(script);
+                }else{
+                    // load google maps asynchrone
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "http://maps.googleapis.com/maps/api/js?sensor=true&callback=Ext.emptyFn";
+                    document.body.appendChild(script);
 
-                BVApp.Main.launched =true;
-                BVApp.Main.init();
+                    BVApp.Main.launched =true;
+                    BVApp.Main.init();
+                }
             }
 });

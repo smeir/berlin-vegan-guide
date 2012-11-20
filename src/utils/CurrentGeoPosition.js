@@ -29,7 +29,7 @@ BVApp.utils.CurrentGeoPosition = new Object({
                                                 bPermissionDenied,
                                                 bLocationUnavailable,
                                                 message) {
-                        if(bPermissionDenied){
+                        if(bPermissionDenied || bLocationUnavailable ){
                             if(!BVApp.utils.CurrentGeoPosition.errorShowed){
                                 BVApp.utils.AppUtils.alertMessage(BVApp.Main.getLangString("PositionAlertTitle"), BVApp.Main.getLangString("PositionAlert"));
                                 BVApp.utils.CurrentGeoPosition.errorShowed = true;

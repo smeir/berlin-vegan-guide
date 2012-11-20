@@ -1,7 +1,7 @@
 
 BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
     fullscreen: true,
-    /* contains the current views, used to filter global back key event,
+            /* contains the current views, used to filter global back key event,
       so only active view reacts on key*/
     activeView: null,
     determinePositionMask: null,

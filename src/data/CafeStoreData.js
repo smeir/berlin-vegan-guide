@@ -53,7 +53,7 @@ Ext.namespace('BVApp','BVApp.data','BVApp.models');BVApp.data.CafeStoreData=[
 ["Ökotussi - Naturkost, Kaffeekultur & Lebensfreude","cafe","Cafe","Großbeerenstraße 11","10963","52.49823","13.38459","030/27575877","","","","","","","","","www.oekotussi.de/","","",""],
 ["Ombretta","cafe","Cafe","Goltzstraße 12a","10781","52.49222","13.35362","030/2163412","10 - 20","10 - 20","10 - 20","10 - 20","10 - 20","10 - 16","","","www.weinhandlung-ombretta.de","","",""],
 ["Pure Origins","cafe","Cafe","Georgenstrasse 193","10117","52.520088","13.391006","0177/2930098","7:30 - 21:00","7:30 - 21:00","7:30 - 21:00","7:30 - 21:00","7:30 - 21:00","8:30 - 20:00","8:30 - 20:00","","","","",""],
-["Sager's Kaffeerösterei","cafe","Cafe","Lotte-Lenya-Bogen 555","10623","52.50497","13.32902","0172/6256159","","","","","","","","","www.sagers.de","","",""],
+["Sager's Kaffeerösterei","cafe","Cafe","Lotte-Lenya-Bogen 555","10623","52.50497","13.32902","0172/6256159","10 - 19","10 - 19","10 - 19","10 - 19","10 - 19","10 - 18","","","www.sagers.de","","",""],
 ["SALOMON BAGELS","cafe","Cafe","Potsdamer Platz Arkaden","10785","52.50709","13.37396","030/25297626","9 - 22","9 - 22","9 - 22","9 - 22","9 - 22","9 - 22","10 - 20","","www.salomon-bagels.de","","",""],
 ["SALOMON BAGELS","cafe","Cafe","Joachimstaler Str. 13","10719","52.50225","13.33098","030/88702617","9 - 18","9 - 18","9 - 18","9 - 18","9 - 18","9 - 18","","","www.salomon-bagels.de","","",""],
 ["Salon Schmück","cafe","Cafe","Skalitzer Strasse 80","10997","52.50086","13.43875","030/69004775","9 - 2","9 - 2","9 - 2","9 - 2","9 - 2","9 - 2","9 - 2","","","","",""],
