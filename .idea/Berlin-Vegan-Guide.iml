@@ -5,8 +5,6 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/build" />
-      <excludeFolder url="file://$MODULE_DIR$/platforms/android/assets/www" />
       <excludeFolder url="file://$MODULE_DIR$/platforms/ios/www" />
       <excludeFolder url="file://$MODULE_DIR$/www/demo" />
     </content>
