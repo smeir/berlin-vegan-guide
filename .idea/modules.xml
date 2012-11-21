@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/platforms/android/BVApp-Android.iml" filepath="$PROJECT_DIR$/platforms/android/BVApp-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platforms/BVApp-Android.iml" filepath="$PROJECT_DIR$/platforms/BVApp-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Berlin-Vegan-Guide.iml" filepath="$PROJECT_DIR$/.idea/Berlin-Vegan-Guide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/generators/Generators.iml" filepath="$PROJECT_DIR$/generators/Generators.iml" />
+    </modules>
+  </component>
+</project>
+
