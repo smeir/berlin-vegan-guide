@@ -7,8 +7,10 @@
         </copy>
     </target>
     <target name="prod.android" depends="prod, copy.lib.android">
-        <copy file="${src.dir}/index_android.html" tofile="${build.dir}/index.html">
+        <copy file="${src.dir}/index_android.html" tofile="${build.dir}/index.html">            
         </copy>
+        <mkdir dir="${src.dir}/platforms/android/assets/"/>
+        <symlink link="${src.dir}/platforms/android/assets/www" resource="../../../${build.dir}"/>
     </target>
     <target name="prod" depends="clean, js.minify, copy.resources"
             description="Full production build">
