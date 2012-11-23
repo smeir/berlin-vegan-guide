@@ -10,9 +10,18 @@
 * installed IntelliJ IDEA [http://www.jetbrains.com/idea/]
 
 ### build apk
-* run "ant prod.android" in root folder, this will minify css & javascript and copy everything to build folder
+on command line
+* cd Berlin-Vegan-Guide/
+* ant prod.android  (this will minify css & javascript and copy everything to build folder)
+
 * open IntelliJ, open project
+* File->Project Structure->Project
+    * set Project SDK to your installed Android SDK
+    * set Project compiler output path
 * Tools->Android->Export Signed Application Package
+### install apk
+* adb uninstall org.berlin_vegan.bvapp (if already installed)
+* adb install BVApp-Android.apk
 
 ## regenerate css files
 
