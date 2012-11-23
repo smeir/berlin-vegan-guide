@@ -1,17 +1,22 @@
-## state
-at the moment build for iphone and android is broken, but you can test it in a desktop browser
-
-##precondition
-
-* create css files with "compass compile" in /resources/scss
-
 ## testing/debugging on desktop
 
 * index.html -> App for desktop browser (only chrome)
 * frame.html -> App for desktop browser in a nice iPhone Frame
 
 ## build for Android
-* run "ant prod.android" in root directory
+### preconditions
+* git clone https://github.com/smeir/Berlin-Vegan-Guide.git
+* installed android sdk
+* installed IntelliJ IDEA [http://www.jetbrains.com/idea/]
+
+### build apk
+* run "ant prod.android" in root folder, this will minify css & javascript and copy everything to build folder
+* open IntelliJ, open project
+* Tools->Android->Export Signed Application Package
+
+## regenerate css files
+
+* update css files with "compass compile" in /resources/scss
 
 ##Supported Platforms
 

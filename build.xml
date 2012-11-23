@@ -16,7 +16,7 @@
             description="Full production build">
     </target>
     <target name="clean">
-        <delete>
+        <delete failonerror="false">
             <fileset dir="${build.dir}" includes="**/*"/>
         </delete>
     </target>
