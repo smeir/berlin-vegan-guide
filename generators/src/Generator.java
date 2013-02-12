@@ -11,6 +11,8 @@ import java.io.*;
 import java.net.URL;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+
 /**
  * Date: 22.07.12
  * Time: 19:49
@@ -47,11 +49,13 @@ public class Generator {
     }
 
     protected void writeTextToFile(String text, String filePath) throws IOException {
-        Writer output = null;
+//        Writer output = null;
         File file = new File(filePath);
-        output = new BufferedWriter(new FileWriter(file));
-        output.write(text);
-        output.close();
+        FileUtils.write(file, text, "UTF-8");
+//        final FileWriter fileWriter = new FileWriter(file);
+//        output = new BufferedWriter(fileWriter);
+//        output.write(text);
+//        output.close();
     }
 
     protected String textEncode(String text) {
