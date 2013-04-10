@@ -1,3 +1,5 @@
+package org.berlinvegan.generators;
+
 import com.google.gdata.data.spreadsheet.*;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
@@ -13,14 +15,6 @@ import java.util.*;
 public class ExtJsStoreGenerator extends Generator {
 
     public static final String REVIEW_DE_BASE_URL = "http://www.berlin-vegan.de/berlin/restaurantkritiken/";
-    public static final String LANG_DE="de";
-    public static final String LANG_EN="en";
-    public static final String TABLE_RESTAURANTS = "Restaurants";
-    public static final String TABLE_SUBWAY = "Subway";
-    public static final String TABLE_SHOPPING = "Shopping";
-    public static final String TABLE_BACKWAREN = "Backwaren";
-    public static final String TABLE_BIO_REFORM = "BioReform";
-    public static final String TABLE_CAFES = "Cafes";
     public static final String EXT_NAMESPACE_BVAPP = "Ext.namespace('BVApp','BVApp.data','BVApp.models');";
 
     public ExtJsStoreGenerator(String username,String password) throws AuthenticationException {

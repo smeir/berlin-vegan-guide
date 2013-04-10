@@ -1,3 +1,5 @@
+package org.berlinvegan.generators;
+
 import com.google.gdata.client.spreadsheet.FeedURLFactory;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.ListEntry;
@@ -9,6 +11,7 @@ import com.google.gdata.util.ServiceException;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -18,6 +21,14 @@ import org.apache.commons.io.FileUtils;
  * Time: 19:49
  */
 public class Generator {
+    public static final String LANG_DE="de";
+    public static final String LANG_EN="en";
+    public static final String TABLE_RESTAURANTS = "Restaurants";
+    public static final String TABLE_SUBWAY = "Subway";
+    public static final String TABLE_SHOPPING = "Shopping";
+    public static final String TABLE_BACKWAREN = "Backwaren";
+    public static final String TABLE_BIO_REFORM = "BioReform";
+    public static final String TABLE_CAFES = "Cafes";
     protected SpreadsheetService service;
     protected FeedURLFactory factory;
 
@@ -37,7 +48,7 @@ public class Generator {
         return service.getFeed(listFeedUrl, ListFeed.class);
     }
 
-    protected List<ListEntry> addEntries(List<ListEntry> entries, SpreadsheetEntry spreadsheet) throws IOException, ServiceException {
+    public List<ListEntry> addEntries(List<ListEntry> entries, SpreadsheetEntry spreadsheet) throws IOException, ServiceException {
         URL listFeedUrl = spreadsheet.getDefaultWorksheet().getListFeedUrl();
         ListFeed feed = getFeed(listFeedUrl);
         if(entries == null){
@@ -47,7 +58,21 @@ public class Generator {
         }
         return entries;
     }
-
+    public ArrayList<Restaurant> getRestaurants() throws Exception {
+        final ArrayList<Restaurant> restaurants = new ArrayList<>();
+        final List<SpreadsheetEntry> spreadsheetEntries = getSpreadsheetEntries();
+        for (SpreadsheetEntry entry : spreadsheetEntries) {
+            if (entry.getTitle().getPlainText().equals(Generator.TABLE_RESTAURANTS)) {
+                List<ListEntry> entryList = null;
+                entryList = addEntries(entryList, entry);
+                for (ListEntry listEntry : entryList) {
+                    final Restaurant restaurant = new Restaurant(listEntry);
+                    restaurants.add(restaurant);
+                }
+            }
+        }
+        return restaurants;
+    }
     protected void writeTextToFile(String text, String filePath) throws IOException {
 //        Writer output = null;
         File file = new File(filePath);

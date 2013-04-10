@@ -1,8 +1,9 @@
+package org.berlinvegan.generators;
+
 import com.google.gdata.data.spreadsheet.ListEntry;
 import com.google.gdata.data.spreadsheet.SpreadsheetEntry;
 import com.google.gdata.util.AuthenticationException;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
