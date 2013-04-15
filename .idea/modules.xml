@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/platforms/android/BVApp-Android.iml" filepath="$PROJECT_DIR$/platforms/android/BVApp-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Berlin-Vegan-Guide.iml" filepath="$PROJECT_DIR$/.idea/Berlin-Vegan-Guide.iml" />
-      <module fileurl="file://$PROJECT_DIR$/generators/Generators.iml" filepath="$PROJECT_DIR$/generators/Generators.iml" />
     </modules>
   </component>
 </project>
