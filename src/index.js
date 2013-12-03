@@ -4,15 +4,16 @@ Ext.namespace('BVApp','BVApp.views','BVApp.models','BVApp.templates','BVApp.util
 BVApp.Main = {
     ui: null,
     errorEMail: "bvapp@berlin-vegan.org",
-    version: "1.4",
+    version: "1.5.1",
     favoriteListStoreID: "favoriteListStore",
     favoriteStoreID: "favoriteStore",
     restaurantStoreID: "restaurantStore",
     cafeStoreID: "cafeStore",
     shopStoreID: "shopStore",
-    maxListItems: 13,
+    maxListItems: 15,
     maxToolbarLetters: 14, // word length in toolbar
     timeoutLocationRequest: 6000, // in miliseconds
+    intervalLocationRequest: 5000, // in miliseconds
 
     /* if app starts and find an location in that distance,
     just nav to it instantly, in meter*/
@@ -58,21 +59,34 @@ BVApp.Main = {
 
         console.log("BVApp.Main.init Mainpanel start");
         this.ui = new BVApp.views.MainPanel();
-        this.ui.determinePositionMask.show();
-        setTimeout(function(){ // hide location request after some time
-           me.locationReady.call(me);
-        },this.timeoutLocationRequest);
-        BVApp.utils.CurrentGeoPosition.updateLocation(function(){
-            me.locationReady.call(me);
-        });
+        if(!BVApp.utils.AppUtils.isAndroid()) { // if not android, use default
+            this.ui.determinePositionMask.show();
+            setTimeout(function(){ // hide location request after some time
+                me.locationReady.call(me);
+            },this.timeoutLocationRequest);
+            BVApp.utils.CurrentGeoPosition.updateLocation(function(){
+                me.locationReady.call(me);
+            });
+        }else{ // special handling for android, because to much problems with phonegap location provider
+            // bvappObj is injected from "App" Activity
+            setInterval(function () {
+                me.getLocation();
+            }, this.intervalLocationRequest);
+            me.getLocation();
+            me.locationReady();
+        }
+
         console.log("BVApp.Main.init Mainpanel ready");
         this.performance = (new Date).getTime() - this.startTime;
         console.log("Performance " +  this.performance);
 
-
-
     },
-    locationReady: function(){        
+    // get location from java activity
+    getLocation: function(){
+        BVApp.utils.CurrentGeoPosition.latitude = bvappObj.getLatitute();
+        BVApp.utils.CurrentGeoPosition.longitude = bvappObj.getLongitute();
+    },
+    locationReady: function(){
         this.ui.determinePositionMask.hide();
         this.showCurrentLocation();
     },

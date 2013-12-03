@@ -316,7 +316,9 @@ BVApp.views.LocationPanel = Ext.extend(Ext.Panel,{
     doNavigation: function(){
         var lon = this.currentRestaurant.get("long");
         var lat = this.currentRestaurant.get("lat");
-        BVApp.utils.AppUtils.doNavigation(lat,lon);
+        var address = this.currentRestaurant.get("street") + "," + this.currentRestaurant.get("citycode");
+        //BVApp.utils.AppUtils.doNavigation(lat,lon);
+        BVApp.utils.AppUtils.doNavigationToAdress(address);
     },
     doTelCall: function(){
         var tel = this.currentRestaurant.get("telephone");

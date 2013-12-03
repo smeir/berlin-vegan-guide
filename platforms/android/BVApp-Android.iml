@@ -6,8 +6,6 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="PROGUARD_CFG_PATH" value="/proguard.cfg" />
-        <includeSystemProguardFile>false</includeSystemProguardFile>
         <includeAssetsFromLibraries>true</includeAssetsFromLibraries>
         <resOverlayFolders />
       </configuration>
@@ -16,10 +14,10 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library>
@@ -27,7 +25,9 @@
           <root url="jar://$MODULE_DIR$/libs/phonegap.0.9.6.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../../../dev/3party/phonegap0.9.6/0.9.6/framework/src" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
