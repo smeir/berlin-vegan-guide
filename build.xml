@@ -53,12 +53,8 @@
     </target>
     <target name="copy.lib.android" depends="copy.lib">
         <copy todir="${build.dir}/lib/android">
-            <filelist dir="${src.dir}/lib/android/"
-                      files="webintent.js"/>
-        </copy>
-        <copy todir="${build.dir}/lib/android">
             <filelist dir="${src.dir}/lib/android"
-                      files="phonegap.0.9.6.min.js">
+                      files="cordova.js,cordova_plugins.js">
             </filelist>
         </copy>
     </target>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.berlin_vegan.bvapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" >
+    <name>Berlin Vegan App</name>
+
+    <access origin="*" />
+    <content src="index.html" />
+    <preference name="loglevel" value="DEBUG" />
+
+    <access origin="http://www.berlin-vegan.de" subdomains="true" />
+    <access origin="http://googleapis.com" subdomains="true" />
+    <access origin="http://127.0.0.1*" />
+
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+</widget>

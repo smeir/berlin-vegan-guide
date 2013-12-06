@@ -118,6 +118,8 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
             me.doBackKeyDown.call(me);
         });
 
+
+
         this.activeView = this.mainTabPanel;
         BVApp.views.MainPanel.superclass.initComponent.call(this);
 
@@ -128,7 +130,7 @@ BVApp.views.MainPanel = Ext.extend(Ext.Panel,{
     doBackKeyDown: function (){
         if(this.activeView === this.mainTabPanel){
             console.log("exitApp:");
-            device.exitApp();
+            BVApp.utils.AppUtils.quitApp();
         }else{
             // call the "back" method on the current view
             this.activeView.doBack.call(this.activeView);

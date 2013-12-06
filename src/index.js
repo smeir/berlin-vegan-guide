@@ -4,7 +4,7 @@ Ext.namespace('BVApp','BVApp.views','BVApp.models','BVApp.templates','BVApp.util
 BVApp.Main = {
     ui: null,
     errorEMail: "bvapp@berlin-vegan.org",
-    version: "1.5.1",
+    version: "1.6",
     favoriteListStoreID: "favoriteListStore",
     favoriteStoreID: "favoriteStore",
     restaurantStoreID: "restaurantStore",
@@ -81,7 +81,9 @@ BVApp.Main = {
         console.log("Performance " +  this.performance);
 
     },
-    // get location from java activity
+    /* get location from java activity
+        call it only on Android
+    */
     getLocation: function(){
         BVApp.utils.CurrentGeoPosition.latitude = bvappObj.getLatitute();
         BVApp.utils.CurrentGeoPosition.longitude = bvappObj.getLongitute();
@@ -178,7 +180,7 @@ BVApp.Main = {
 Ext.setup({
     icon: 'resources/images/icon.png',
             tabletStartupScreen: 'tablet_startup.png',
-            phoneStartupScreen: 'resources/images/splashscreen.png',
+    phoneStartupScreen: 'resources/images/splashscreen.png',
             statusBarStyle: 'black',
             glossOnIcon: true,
             onReady: function() {

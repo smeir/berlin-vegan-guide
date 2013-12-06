@@ -1,5 +1,5 @@
-
 BVApp.utils.AppUtils = {
+
 
 
     android : false,
@@ -24,19 +24,7 @@ BVApp.utils.AppUtils = {
             if(this.isIPhone()){
              window.plugins.emailComposer.showEmailComposer(subject,body,email);
             }else if(this.isAndroid()){
-                var extras = {};
-                extras[WebIntent.EXTRA_SUBJECT] = subject;
-                extras[WebIntent.EXTRA_TEXT] = body;
-                extras[WebIntent.EXTRA_EMAIL] = email;
-                window.plugins.webintent.startActivity({
-                    action: WebIntent.ACTION_SEND,
-                    type: 'text/plain',
-                    extras: extras
-                }, function() {
-                    console.log("sendEMail:success");
-                }, function() {
-                    console.log("sendEMail:error");
-                });
+                bvappObj.sendEMail(email, subject, body);
             }
         }else{
             this.alertMessage(BVApp.Main.getLangString("OptionsHint"),BVApp.Main.getLangString("EMailOnlyInNativeApp"));
@@ -46,40 +34,17 @@ BVApp.utils.AppUtils = {
     dialTelNumber: function(number){
         console.log("enter dialTelNumber");
         if(this.isAndroid()){
-            window.plugins.webintent.startActivity({
-                action: WebIntent.ACTION_DIAL,
-                url: "tel:" + number
-            }, function() {
-                console.log("dialNumber:success");
-            }, function() {
-                console.log("dialNumber:error");
-            });
+            bvappObj.dialTelNumber(number);
         }
     },
     doNavigation: function(lat,lon){
-        console.log("enter doNavigation");
-        if(this.isAndroid()){
-            window.plugins.webintent.startActivity({
-                action: WebIntent.ACTION_VIEW,
-                url: "geo:" + lat + "," +lon + "?z=20"
-            }, function() {
-                console.log("doNavigation:success");
-            }, function() {
-                console.log("doNavigation:error");
-            });
-        }
+        console.log("doNavigation not implemented");
+
     },
     doNavigationToAdress: function(address){
-        console.log("enter doNavigation");
+        console.log("enter doNavigationToAdress");
         if(this.isAndroid()){
-            window.plugins.webintent.startActivity({
-                action: WebIntent.ACTION_VIEW,
-                url: "geo:0,0?q=" + address
-            }, function() {
-                console.log("doNavigation:success");
-            }, function() {
-                console.log("doNavigation:error");
-            });
+            bvappObj.doNavigation(address);
         }
     },
     isIPhone: function(){
@@ -89,12 +54,17 @@ BVApp.utils.AppUtils = {
         return this.android;
     },
     isPhoneGap: function(){
-        return (typeof device !== "undefined");
+        //return (typeof device !== "undefined");
+        return this.isAndroid() || this.isIPhone();
     },
     alertMessage: function(title,message){
         if(this.isPhoneGap()){
-            navigator.notification.alert(message,Ext.emptyFn,title);
-            //Ext.Msg.alert(title,message, Ext.emptyFn);
+            if(this.isIPhone()) {
+                navigator.notification.alert(message,Ext.emptyFn,title);
+            }{
+                bvappObj.alert(message,title);
+            }
+
         }else{
             Ext.Msg.alert(title,message, Ext.emptyFn);
         }

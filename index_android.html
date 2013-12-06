@@ -15,8 +15,7 @@
     <!-- Sencha Touch JS -->
     <script type="text/javascript" src="lib/touch/sencha-touch.js"></script>
 
-    <script type="text/javascript" charset="utf-8" src="lib/android/phonegap.0.9.6.min.js"></script>
-    <script type="text/javascript" src="lib/android/webintent.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/android/cordova.js"></script>
     <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/ShopStoreData.js"></script>
     <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/RestaurantStoreData.js"></script>
     <script type="text/javascript" src="http://www.berlin-vegan.de/app/data/CafeStoreData.js"></script>
@@ -25,6 +24,11 @@
 
     <script type="text/javascript" charset="utf-8">
         BVApp.utils.AppUtils.android =true;
+        device = {}; // add device object for compatibility, newer phonegap version expose device only with additional plugins. :-(
+        device.name = bvappDevice.getName();
+        device.platform = bvappDevice.getPlatform();
+        device.version = bvappDevice.getVersion();
+
         // If you want to prevent dragging, uncomment this section
         function preventBehavior(e) {
             e.preventDefault();
@@ -52,6 +56,7 @@
             });
 
         }*/
+
         //BackButton.override();
     </script>
 
@@ -60,7 +65,7 @@
 
     -->
 </head>
-<!--<body onload="onBodyLoad()">-->
-<body>
+<body onload="onBodyLoad()">
+<!--<body>-->
 </body>
 </html>

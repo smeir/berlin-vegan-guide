@@ -21,6 +21,7 @@ public class JavaScriptInterface {
         Log.d(TAG, "getLatitute");
         return app.getLatitute();
     }
+    @JavascriptInterface
     public double getLongitute(){
         Log.d(TAG, "getLongitute");
         return app.getLongitute();

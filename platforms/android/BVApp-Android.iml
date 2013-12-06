@@ -19,17 +19,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/phonegap.0.9.6.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../../../../dev/3party/phonegap0.9.6/0.9.6/framework/src" />
-        </SOURCES>
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="cordova-3.2.0" level="project" />
   </component>
 </module>
 
