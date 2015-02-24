@@ -14,62 +14,79 @@ import android.os.Bundle;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import org.apache.cordova.CordovaActivity;
-import org.apache.cordova.PluginResult;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Iterator;
-import java.util.Map;
 
 
 public class App extends CordovaActivity implements LocationListener {
     public static final String TAG = "bvapp.App";
-    private double latitute=52.518611;
-    private double longitude=13.408056;
+    private double latitute = 0;
+    private double longitude = 0;
     private LocationManager locationManager;
     private String provider;
+    private boolean gpsEnabled = false;
+    private boolean networkEnabled = false;
 
-    /** Called when the activity is first created. */   
-    @Override 
-    public void onCreate(Bundle savedInstanceState) {                          
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.init();
         super.setIntegerProperty("splashscreen", R.drawable.splash);
         this.setIntegerProperty("loadUrlTimeoutValue", 70000);
-        super.loadUrl("file:///android_asset/www/index.html", 2000); 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, true);
-        if (provider == null) {
-            provider = locationManager.getBestProvider(criteria, false);
-        }
-        if (provider == null) {
-            provider = LocationManager.GPS_PROVIDER;
-        }
-        Location location = locationManager.getLastKnownLocation(provider);
-
-        if (location != null) {
-            onLocationChanged(location);
-        }
+        super.loadUrl("file:///android_asset/www/index.html", 2000);
+        initLocationProvider();
         appView.addJavascriptInterface(this, "bvappObj");
         appView.addJavascriptInterface(new Device(), "bvappDevice");
+    }
+
+    private void initLocationProvider() {
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+
+        /*if (provider == null) {
+            provider = locationManager.getBestProvider(criteria, false);
+        }
+
+        */
+
+        gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        provider = LocationManager.NETWORK_PROVIDER;
+
+
+        Log.d(TAG, "gpsEnabled: " + gpsEnabled);
+        Log.d(TAG, "networkEnabled: " + networkEnabled);
+        Log.d(TAG, "provider: " + provider);
+
     }
 
     /* Request updates at startup */
     @Override
     protected void onResume() {
         super.onResume();
-        if (provider != null) {
-            locationManager.requestLocationUpdates(provider, 1000, 0, this);
-        }
+        requestLocationUpdates();
+    }
+
+    private void requestLocationUpdates() {
+        locationManager.requestLocationUpdates(provider, 400, 1, this);
     }
 
     /* Remove the locationlistener updates when Activity is paused */
     @Override
     protected void onPause() {
         super.onPause();
+        removeLocationsUpdates();
+    }
+
+    private void removeLocationsUpdates() {
         locationManager.removeUpdates(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        android.os.Process.killProcess(android.os.Process.myPid());
+        super.onDestroy();
     }
 
     @Override
@@ -77,34 +94,42 @@ public class App extends CordovaActivity implements LocationListener {
         latitute = location.getLatitude();
         longitude = location.getLongitude();
         Log.d(TAG, "onLocationChanged(" + latitute + "," + longitude + ")");
+        if (gpsEnabled && !provider.equalsIgnoreCase(LocationManager.GPS_PROVIDER)) {
+            provider = LocationManager.GPS_PROVIDER;
+            removeLocationsUpdates();
+            requestLocationUpdates();
+        }
     }
+
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.d(TAG, "onStatusChanged("+provider+","+ status + ")");
+        Log.d(TAG, "onStatusChanged(" + provider + "," + status + ")");
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        Log.d(TAG, "onProviderEnabled("+provider+")");
+        Log.d(TAG, "onProviderEnabled(" + provider + ")");
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        Log.d(TAG, "onProviderDisabled("+provider+")");
+        Log.d(TAG, "onProviderDisabled(" + provider + ")");
     }
 
     @JavascriptInterface
     public void dialTelNumber(String number) {
         final Uri uri = Uri.parse("tel:" + number);
-        final Intent intent = new Intent(Intent.ACTION_DIAL,uri);
+        final Intent intent = new Intent(Intent.ACTION_DIAL, uri);
         startActivity(intent);
     }
+
     @JavascriptInterface
     public void doNavigation(String address) {
         final Uri uri = Uri.parse("geo:0,0?q=" + address);
-        final Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+        final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
+
     @JavascriptInterface
     public void sendEMail(String receiver, String subject, String body) {
         final Intent intent = new Intent(Intent.ACTION_SEND);
@@ -116,6 +141,7 @@ public class App extends CordovaActivity implements LocationListener {
         intent.putExtra(Intent.EXTRA_TEXT, body);
         startActivity(intent);
     }
+
     @JavascriptInterface
     public void alert(final String message, final String title) {
         Runnable runnable = new Runnable() {
@@ -138,14 +164,35 @@ public class App extends CordovaActivity implements LocationListener {
         runOnUiThread(runnable);
 
     }
+
     @JavascriptInterface
     public double getLatitute() {
         Log.d(TAG, "getLatitute" + latitute);
         return latitute;
     }
+
     @JavascriptInterface
     public double getLongitute() {
-        Log.d(TAG, "getLongitute:"+ longitude);
+        Log.d(TAG, "getLongitute:" + longitude);
         return longitude;
+    }
+
+    @JavascriptInterface
+    public void exitApp() {
+        finish();
+    }
+
+    @JavascriptInterface
+    public boolean isGPSLocationEnabled() {
+        return gpsEnabled;
+    }
+
+    @JavascriptInterface
+    public boolean isNetworkLocationEnabled() {
+        return networkEnabled;
+    }
+    @JavascriptInterface
+    public String getLocationProvider() {
+        return provider;
     }
 }

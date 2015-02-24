@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.berlin_vegan.bvapp"
-      android:versionName="1.6" android:versionCode="18" android:installLocation="auto">
+      android:versionName="1.8" android:versionCode="20" android:installLocation="auto">
 <supports-screens
 android:largeScreens="true"
 android:normalScreens="true"

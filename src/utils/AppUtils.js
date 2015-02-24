@@ -83,6 +83,9 @@ BVApp.utils.AppUtils = {
      return connection;
     },
     quitApp: function(){
+        if(this.isAndroid()){
+            bvappObj.exitApp();
+        }
         if (navigator.app && navigator.app.exitApp) {
             navigator.app.exitApp();
         } else if (navigator.device && navigator.device.exitApp) {
@@ -114,6 +117,7 @@ BVApp.utils.AppUtils = {
             lang = "en"; // en default for all unknow languages
         }
         return lang;
+
     }
     /*,
     loadGoogleMaps: function(){

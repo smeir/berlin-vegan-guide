@@ -89,7 +89,7 @@ BVApp.utils.Locales = {
         EMailOnlyInNativeApp: "E-Mail versenden funktioniert nicht in der web Version.",
 
         PositionAlertTitle: "Warnung",
-        PositionAlert: "Standort kann nicht ermittelt werden, Bitte schalten Sie das GPS an.",
+        PositionAlert: "Standort kann nicht ermittelt werden, Bitte schalte das GPS an.",
         PleaseWait: "Bitte warten...",
         DeterminePosition: "Ermittle aktuellen Standort...",
 

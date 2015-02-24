@@ -4,7 +4,7 @@ Ext.namespace('BVApp','BVApp.views','BVApp.models','BVApp.templates','BVApp.util
 BVApp.Main = {
     ui: null,
     errorEMail: "bvapp@berlin-vegan.org",
-    version: "1.6",
+    version: "1.8",
     favoriteListStoreID: "favoriteListStore",
     favoriteStoreID: "favoriteStore",
     restaurantStoreID: "restaurantStore",
@@ -13,7 +13,7 @@ BVApp.Main = {
     maxListItems: 15,
     maxToolbarLetters: 14, // word length in toolbar
     timeoutLocationRequest: 6000, // in miliseconds
-    intervalLocationRequest: 5000, // in miliseconds
+    intervalLocationRequest: 2000, // in miliseconds
 
     /* if app starts and find an location in that distance,
     just nav to it instantly, in meter*/
@@ -69,11 +69,17 @@ BVApp.Main = {
             });
         }else{ // special handling for android, because to much problems with phonegap location provider
             // bvappObj is injected from "App" Activity
+            this.ui.determinePositionMask.show();
+            if(!bvappObj.isGPSLocationEnabled() && !bvappObj.isNetworkLocationEnabled()) {
+                BVApp.utils.AppUtils.alertMessage(BVApp.Main.getLangString("PositionAlertTitle"), BVApp.Main.getLangString("PositionAlert"));
+            }
             setInterval(function () {
                 me.getLocation();
+                if(BVApp.utils.CurrentGeoPosition.latitude != 0) {
+                    me.locationReady();
+                }
             }, this.intervalLocationRequest);
-            me.getLocation();
-            me.locationReady();
+
         }
 
         console.log("BVApp.Main.init Mainpanel ready");
@@ -90,18 +96,6 @@ BVApp.Main = {
     },
     locationReady: function(){
         this.ui.determinePositionMask.hide();
-        this.showCurrentLocation();
-    },
-    /**
-        if we are near a know location, just show it directly
-     */
-    showCurrentLocation: function(){
-        var location = this.getCurrentLocationRecord();
-        if(location !== null){
-            this.ui.favoriteRestaurantPanel.updateRestaurant(location);
-            this.ui.setActiveItem(this.ui.favoriteRestaurantPanel,false)
-            this.ui.activeView = this.ui.favoriteRestaurantPanel;
-        }
     },
 
     /**
@@ -156,6 +150,12 @@ BVApp.Main = {
         body += "Platform: " + device.platform + "\n";
         body += "Device Version: " + device.version + "\n";
         body += "Performance: " + this.performance + "\n";
+        if(BVApp.utils.AppUtils.isAndroid()) {
+            body += "GPS Location: " + bvappObj.isGPSLocationEnabled() + "\n";
+            body += "Network Location: " + bvappObj.isNetworkLocationEnabled()+ "\n";
+            body += "Location Provider: " + bvappObj.getLocationProvider()+ "\n";
+
+        }
         body += "**************************\n" ;
         return body;
     },
