@@ -41,6 +41,6 @@ on command line
 
 * Sencha Touch 1.1
 * Include.js 1.0.4 http://capmousse.github.com/include.js/
-* phonegap 0.9.4
+* phonegap 0.9.4/Cordova 3.2 (Android)
 * WebStorm 2.0/Intellij IDEA 11
 
