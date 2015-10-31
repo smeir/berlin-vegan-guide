@@ -1,3 +1,7 @@
+**This app is depracted and should not be used anymore.**
+
+**new version is available on [Berlin-Vegan-Guide repo](https://github.com/Berlin-Vegan/berlin-vegan-guide) **
+
 ## testing/debugging on desktop
 
 * index.html -> App for desktop browser (only chrome)
